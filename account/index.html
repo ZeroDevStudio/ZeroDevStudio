@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f9fc">
+  <script>
+    (function () {
+      try {
+        var preference = localStorage.getItem('zerodev-theme') || 'system';
+        var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.themePreference = preference;
+        document.documentElement.dataset.theme = preference === 'dark' || (preference === 'system' && systemDark) ? 'dark' : 'light';
+      } catch (error) { document.documentElement.dataset.themePreference = 'system'; document.documentElement.dataset.theme = 'light'; }
+    }());
+  </script>
+  <meta name="description" content="Preview the ZeroDev Studio sign-in, account registration, guest access, and password recovery experience.">
+  <title>Account access — ZeroDev Studio</title>
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="../css/auth.css">
+  <script src="../js/theme.js" defer></script>
+  <script src="../js/auth.js" defer></script>
+</head>
+<body class="auth-page">
+  <a class="skip-link" href="#auth-card">Skip to account access</a>
+  <header class="auth-header">
+    <a class="auth-brand" href="../index.html" aria-label="ZeroDev Studio homepage">
+      <span class="auth-brand-mark" aria-hidden="true">Z</span><span>ZeroDev Studio</span>
+    </a>
+    <div class="auth-header-actions">
+      <div class="theme-picker">
+        <label for="auth-theme-select">Theme</label>
+        <select id="auth-theme-select" data-theme-select aria-label="Color theme">
+          <option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option>
+        </select>
+      </div>
+      <a class="auth-back-link" href="../index.html">Back to website ↗</a>
+    </div>
+  </header>
+
+  <main class="auth-main">
+    <aside class="auth-aside">
+      <div>
+        <p class="eyebrow">YOUR PROJECT SPACE</p>
+        <h1>Good ideas deserve a <span>clear path.</span></h1>
+        <p class="auth-aside-copy">Sign in to follow project updates, keep conversations together, and stay connected with the ZeroDev Studio team.</p>
+      </div>
+      <p class="auth-aside-foot">STARTED WITH ZERO. BUILT WITH PURPOSE.</p>
+    </aside>
+
+    <section class="auth-form-area" aria-label="Account access options">
+      <div class="auth-card" id="auth-card">
+        <p class="auth-kicker">ZERO DEV STUDIO / CLIENT AREA</p>
+        <h2 id="auth-heading">Welcome back</h2>
+        <p class="auth-intro" id="auth-intro">Sign in to view your projects and messages.</p>
+
+        <div class="auth-tabs" role="tablist" aria-label="Account access options">
+          <button class="auth-tab" type="button" role="tab" id="tab-signin" aria-controls="view-signin" aria-selected="true" data-auth-view="signin">Sign in</button>
+          <button class="auth-tab" type="button" role="tab" id="tab-register" aria-controls="view-register" aria-selected="false" data-auth-view="register">Create account</button>
+          <button class="auth-tab" type="button" role="tab" id="tab-guest" aria-controls="view-guest" aria-selected="false" data-auth-view="guest">Guest access</button>
+        </div>
+
+        <section class="auth-view" id="view-signin" role="tabpanel" aria-labelledby="tab-signin" data-auth-panel="signin">
+          <form class="auth-form" data-demo-form="signin">
+            <label class="auth-field">Email address<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
+            <label class="auth-field">Password<input type="password" name="password" autocomplete="current-password" placeholder="Enter your password" required></label>
+            <div class="auth-inline-row"><span></span><button class="auth-text-button" type="button" data-auth-view="recovery">Forgot password?</button></div>
+            <button class="auth-submit" type="submit">Sign in <span aria-hidden="true">→</span></button>
+          </form>
+          <div class="auth-separator">OR</div>
+          <button class="auth-guest-shortcut" type="button" data-auth-view="guest">Continue with a guest project reference</button>
+          <p class="auth-footnote">New to ZeroDev Studio? <button class="auth-text-button" type="button" data-auth-view="register">Create an account</button></p>
+        </section>
+
+        <section class="auth-view" id="view-register" role="tabpanel" aria-labelledby="tab-register" data-auth-panel="register" hidden>
+          <form class="auth-form" data-demo-form="register">
+            <label class="auth-field">Full name<input type="text" name="name" autocomplete="name" placeholder="Your name" required></label>
+            <label class="auth-field">Email address<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
+            <label class="auth-field">Create password<input type="password" name="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" required><span class="auth-field-hint">The real service will require a strong, unique password and email verification.</span></label>
+            <label class="auth-check"><input type="checkbox" name="terms" required><span>I understand this is a design preview and agree to the future account terms when provided.</span></label>
+            <button class="auth-submit" type="submit">Create account <span aria-hidden="true">→</span></button>
+          </form>
+        </section>
+
+        <section class="auth-view" id="view-guest" role="tabpanel" aria-labelledby="tab-guest" data-auth-panel="guest" hidden>
+          <form class="auth-form" data-demo-form="guest">
+            <label class="auth-field">Project reference<input type="text" name="ticket" autocomplete="off" placeholder="Example: ZD-2026-0001" required></label>
+            <label class="auth-field">Email address used for the request<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
+            <span class="auth-field-hint">A future secure guest-access flow will verify your email and send a private link. A ticket number alone will never grant access.</span>
+            <button class="auth-submit" type="submit">Request secure access link <span aria-hidden="true">→</span></button>
+          </form>
+          <p class="auth-footnote">Have a registered account? <button class="auth-text-button" type="button" data-auth-view="signin">Sign in instead</button></p>
+        </section>
+
+        <section class="auth-view" id="view-recovery" role="tabpanel" aria-label="Password recovery" data-auth-panel="recovery" hidden>
+          <form class="auth-form" data-demo-form="recovery">
+            <label class="auth-field">Account email<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
+            <span class="auth-field-hint">If an account exists, the real service will send a time-limited password reset link.</span>
+            <button class="auth-submit" type="submit">Send reset instructions <span aria-hidden="true">→</span></button>
+          </form>
+          <p class="auth-footnote"><button class="auth-text-button" type="button" data-auth-view="signin">← Back to sign in</button></p>
+        </section>
+
+        <p class="auth-message" id="auth-message" role="status" aria-live="polite"></p>
+        <p class="auth-demo-note"><strong>Prototype notice:</strong> This page does not create accounts, send emails, or authenticate users. Do not enter real passwords or personal information here.</p>
+        <a class="auth-preview-link" href="../portal/index.html">Open the sample client workspace ↗</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

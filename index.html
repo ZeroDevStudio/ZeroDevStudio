@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f9fc">
+  <script>
+    (function () {
+      try {
+        var preference = localStorage.getItem('zerodev-theme') || 'system';
+        var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var resolved = preference === 'dark' || (preference === 'system' && systemDark) ? 'dark' : 'light';
+        document.documentElement.dataset.themePreference = preference;
+        document.documentElement.dataset.theme = resolved;
+      } catch (error) {
+        document.documentElement.dataset.themePreference = 'system';
+        document.documentElement.dataset.theme = 'light';
+      }
+    }());
+  </script>
+  <meta name="description" content="ZeroDev Studio creates thoughtful, responsive websites for businesses, creators, and new ideas.">
+  <title>ZeroDev Studio — Your next idea, online</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <script src="js/theme.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="ZeroDev Studio home">
+        <span class="brand-mark" aria-hidden="true">Z</span>
+        <span class="brand-name">ZeroDev <span>Studio</span></span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="primary-nav" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+        <div class="theme-picker theme-picker-public">
+          <label for="public-theme-select">Theme</label>
+          <select id="public-theme-select" data-theme-select aria-label="Color theme">
+            <option value="system">System</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+        <a href="#services">Services</a>
+        <a href="#work">Our work</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#process">Process</a>
+        <a href="#faq">FAQ</a>
+        <a class="portal-nav-link" href="account/index.html">Sign in</a>
+        <a class="nav-cta" href="#start-project">Start a project <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero section-space">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot"></span> INDEPENDENT WEB DESIGN & DEVELOPMENT</p>
+          <h1>Your next idea deserves a <span>great place</span> on the web.</h1>
+          <p class="hero-description">We make clean, thoughtful websites that help turn ideas into something people can explore, understand, and remember.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#start-project">Start a project <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="#services">Explore what we do <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-note"><span class="note-line"></span><span>Started with zero. Built with purpose.</span></div>
+        </div>
+
+        <div class="hero-art" aria-label="Decorative website preview">
+          <div class="art-orbit orbit-one"></div>
+          <div class="art-orbit orbit-two"></div>
+          <div class="browser-card">
+            <div class="browser-top">
+              <div class="browser-dots"><i></i><i></i><i></i></div>
+              <span>your-next-idea.web</span>
+              <span class="browser-lock" aria-hidden="true">⌑</span>
+            </div>
+            <div class="browser-content">
+              <div class="mock-nav"><span class="mock-logo"></span><span class="mock-nav-lines"></span></div>
+              <div class="mock-hero-label">A LITTLE SPACE TO GROW</div>
+              <div class="mock-headline">Make room for<br><em>what's next.</em></div>
+              <div class="mock-copy"></div><div class="mock-copy short"></div>
+              <div class="mock-button"></div>
+              <div class="mock-bottom"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+          <div class="floating-chip chip-top"><span class="chip-icon">✳</span><span><b>Thoughtful design</b><small>Made around your goals</small></span></div>
+          <div class="floating-chip chip-bottom"><span class="chip-check">✓</span><span><b>Responsive by design</b><small>Desktop, tablet & mobile</small></span></div>
+          <div class="art-caption">A good idea deserves a good beginning.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Studio approach">
+      <div class="container trust-grid">
+        <p><span>01</span> Clear communication</p>
+        <p><span>02</span> Purposeful design</p>
+        <p><span>03</span> Built for real screens</p>
+        <p><span>04</span> Transparent pricing</p>
+      </div>
+    </section>
+
+    <section class="section-space" id="services">
+      <div class="container">
+        <div class="section-heading split-heading">
+          <div><p class="eyebrow">WHAT WE CAN CREATE</p><h2>Good websites.<br><span>Clear purpose.</span></h2></div>
+          <p class="section-intro">Every project starts with what you need. We focus on the essentials, then shape the details around your goals and budget.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-icon icon-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="15" rx="2"></rect><path d="M3 8h18M7 6h.01M10 6h.01"></path></svg></div>
+            <p class="card-index">01 / DIGITAL PRESENCE</p>
+            <h3>Business websites</h3>
+            <p>A professional home for your business, with the information visitors need and a design that feels like your brand.</p>
+            <span class="card-arrow" aria-hidden="true">↗</span>
+          </article>
+          <article class="service-card featured-service">
+            <div class="service-icon icon-violet" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"></path><path d="M4 5.5v15M8 7h8M8 10h6"></path></svg></div>
+            <p class="card-index">02 / ONE CLEAR MESSAGE</p>
+            <h3>Landing pages</h3>
+            <p>Focused pages for a product, event, service, or campaign that guide visitors toward one clear next step.</p>
+            <span class="card-arrow" aria-hidden="true">↗</span>
+          </article>
+          <article class="service-card">
+            <div class="service-icon icon-mint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v4h-7zM13 10h7v10h-7zM4 13h7v7H4z"></path></svg></div>
+            <p class="card-index">03 / MADE TO FIT</p>
+            <h3>Custom web pages</h3>
+            <p>Extra pages and tailored sections that make your website more useful, personal, and easy to navigate.</p>
+            <span class="card-arrow" aria-hidden="true">↗</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-section section-space" id="work">
+      <div class="container">
+        <div class="section-heading split-heading">
+          <div><p class="eyebrow">THE ZERO DEV CONCEPT COLLECTION</p><h2>Ideas, explored.<br><span>Designs with direction.</span></h2></div>
+          <p class="section-intro">Explore a few original sample concepts made for this portfolio. They demonstrate possible design directions and are not represented as completed client projects.</p>
+        </div>
+
+        <div class="portfolio-toolbar">
+          <div class="portfolio-filters" role="group" aria-label="Filter sample concepts">
+            <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All concepts <span>03</span></button>
+            <button class="filter-button" type="button" data-filter="business" aria-pressed="false">Business <span>02</span></button>
+            <button class="filter-button" type="button" data-filter="personal" aria-pressed="false">Personal <span>01</span></button>
+          </div>
+          <p class="portfolio-count" id="portfolio-count" aria-live="polite">Showing 3 sample concepts</p>
+        </div>
+
+        <div class="concept-grid" id="concept-grid">
+          <article class="concept-card" data-category="business">
+            <div class="concept-preview preview-cafe">
+              <div class="cafe-window"><span class="cafe-mini-logo">DAYBREAK</span><div class="cafe-title">A slower kind<br>of morning.</div><div class="cafe-subtitle">COFFEE · COMMUNITY · GOOD DAYS</div><div class="cafe-cta">FIND YOUR COFFEE</div><div class="coffee-shape"></div></div>
+            </div>
+            <div class="concept-meta">
+              <div><span class="concept-type">SAMPLE CONCEPT / 01</span><h3>Daybreak Coffee</h3><p>A warm, welcoming website concept for an independent café.</p></div>
+              <span class="concept-tag">Small business</span>
+            </div>
+            <div class="concept-actions"><button class="concept-link" type="button" data-view-concept data-title="Daybreak Coffee" data-category="Small business website" data-description="A warm café concept built around atmosphere, a clear menu path, location details, and a friendly first impression." data-features="Editorial-style café homepage|Menu and featured drinks section|Location and opening-hours area|Clear visit-us call to action">View concept details <span aria-hidden="true">↗</span></button></div>
+          </article>
+
+          <article class="concept-card" data-category="personal">
+            <div class="concept-preview preview-creator">
+              <div class="creator-window"><div class="creator-kicker">CREATIVE PORTFOLIO</div><div class="creator-title">Ideas into<br><i>images.</i></div><div class="creator-blocks"><span></span><span></span><span></span></div><div class="creator-foot">SELECTED WORK — 2026</div></div>
+            </div>
+            <div class="concept-meta">
+              <div><span class="concept-type">SAMPLE CONCEPT / 02</span><h3>Creator portfolio</h3><p>A personal online home for selected creative work.</p></div>
+              <span class="concept-tag">Personal brand</span>
+            </div>
+            <div class="concept-actions"><button class="concept-link" type="button" data-view-concept data-title="Creator portfolio" data-category="Personal portfolio website" data-description="A simple, expressive portfolio direction that gives an independent creator room to introduce themselves and present selected work." data-features="Personal introduction and profile|Selected work gallery|Short project descriptions|Contact and social-link area">View concept details <span aria-hidden="true">↗</span></button></div>
+          </article>
+
+          <article class="concept-card" data-category="business">
+            <div class="concept-preview preview-objects" aria-label="Decorative stationery shop website concept">
+              <div class="objects-window">
+                <div class="objects-top"><span>FORM & FIELD</span><span>SHOP&nbsp;&nbsp; ABOUT&nbsp;&nbsp; NOTES</span></div>
+                <div class="objects-copy"><span>OBJECTS FOR EVERY DAY</span><strong>Make space<br>for good ideas.</strong><small>Thoughtful paper goods for plans, lists, and everything in between.</small><b>EXPLORE THE COLLECTION ↗</b></div>
+                <div class="objects-product product-one"><span></span></div><div class="objects-product product-two"><span></span></div><div class="objects-product product-three"><span></span></div>
+                <div class="objects-footer">PAPER GOODS · DESIGNED WITH INTENTION</div>
+              </div>
+            </div>
+            <div class="concept-meta">
+              <div><span class="concept-type">SAMPLE CONCEPT / 03</span><h3>Form & Field</h3><p>A calm storefront direction for a stationery brand.</p></div>
+              <span class="concept-tag">Online shop concept</span>
+            </div>
+            <div class="concept-actions"><button class="concept-link" type="button" data-view-concept data-title="Form & Field" data-category="Small business storefront concept" data-description="A product-led storefront concept for a stationery label, using a quiet editorial layout and clear product discovery." data-features="Brand-led storefront homepage|Featured collection presentation|Product category navigation|Story and brand introduction">View concept details <span aria-hidden="true">↗</span></button></div>
+          </article>
+        </div>
+        <p class="portfolio-disclaimer">Portfolio note: these are demonstration concepts created for ZeroDev Studio. They are not client commissions, paid projects, or proof of completed commercial work.</p>
+      </div>
+    </section>
+
+    <section class="pricing-section section-space" id="pricing">
+      <div class="container pricing-layout">
+        <div class="pricing-copy">
+          <p class="eyebrow">STRAIGHTFORWARD PRICING</p>
+          <h2>A starting point.<br><span>Not a one-size-fits-all price.</span></h2>
+          <p class="section-intro">Every project is different. The final price is based on the work involved, the features you need, and the scope we agree on together.</p>
+          <div class="pricing-points">
+            <p><span>✓</span> Scope reviewed before a quote</p>
+            <p><span>✓</span> Clear project requirements</p>
+            <p><span>✓</span> No work begins without agreement</p>
+          </div>
+        </div>
+        <div class="price-card">
+          <div class="price-card-top"><span>WEBSITE PROJECTS</span><span class="price-spark">✳</span></div>
+          <p class="price-label">Starting at</p>
+          <div class="price-main">$20<span> USD</span></div>
+          <div class="price-php">Approximately <b>₱1,275 PHP</b></div>
+          <p class="price-disclaimer">PHP estimate based on the indicative rate in the approved v1.1 specification. Actual conversion and payment rates may change.</p>
+          <div class="price-divider"></div>
+          <p class="included-title">Your final quotation may depend on:</p>
+          <ul class="price-list">
+            <li>Number of pages and sections</li>
+            <li>Design complexity and content</li>
+            <li>Features and functionality</li>
+            <li>Development time and agreed revisions</li>
+          </ul>
+          <a class="button button-primary button-full" href="#start-project">Discuss a project <span aria-hidden="true">↗</span></a>
+          <p class="quote-note">The starting price is not a guaranteed final price or a promise that every request can be completed for that amount.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="payment-section">
+      <div class="container">
+        <div class="payment-panel">
+          <div class="payment-main">
+            <div class="payment-symbol" aria-hidden="true">₱</div>
+            <div><p class="eyebrow">PAYMENT INFORMATION</p><h2>Know how payment works.</h2><p>We currently accept GCash only. PayPal is planned for a future release and cannot be used yet.</p></div>
+          </div>
+          <div class="payment-methods">
+            <div class="method-card method-active"><span class="method-status"><i></i> CURRENTLY ACCEPTED</span><strong>GCash</strong><small>Available after an approved quotation and official payment instructions.</small></div>
+            <div class="method-card method-soon"><span class="method-status">COMING SOON</span><strong>PayPal</strong><small>Not available for payments at this time.</small></div>
+          </div>
+          <div class="payment-warning"><span class="warning-icon" aria-hidden="true">!</span><p><b>Important payment notice</b><br>At the moment, ZeroDev Studio only accepts payments through GCash. PayPal payments are currently unavailable and will be introduced in the future. Do not send money through any other method unless it is officially announced by ZeroDev Studio. Never share your GCash MPIN, OTP, or account password.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space process-section" id="process">
+      <div class="container">
+        <div class="section-heading"><p class="eyebrow">HOW A PROJECT MOVES FORWARD</p><h2>A clear process, <span>step by step.</span></h2><p class="section-intro">No guessing games. We review the request, agree on the details, and keep the next step clear.</p></div>
+        <div class="process-grid">
+          <article><span class="process-number">01</span><h3>Tell us the idea</h3><p>Share what you want to make, who it is for, and what you would like it to do.</p></article>
+          <article><span class="process-number">02</span><h3>Review & discuss</h3><p>We look at the scope, ask questions, and work out what is practical.</p></article>
+          <article><span class="process-number">03</span><h3>Receive a quote</h3><p>You receive the proposed scope, price, and terms before deciding to proceed.</p></article>
+          <article><span class="process-number">04</span><h3>Build together</h3><p>Work begins only after the proposal and payment terms are agreed.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section section-space" id="faq">
+      <div class="container faq-layout">
+        <div><p class="eyebrow">GOOD TO KNOW</p><h2>Questions, <span>answered.</span></h2><p class="section-intro">A few details to make the process clearer before a project begins.</p></div>
+        <div class="faq-list">
+          <details class="faq-item"><summary>Is ₱1,275 the final price for every website?<span aria-hidden="true">+</span></summary><p>No. It is an approximate PHP equivalent of the $20 USD starting price in the approved specification. The final quotation depends on your project's pages, features, design, and overall scope.</p></details>
+          <details class="faq-item"><summary>What payment methods are available?<span aria-hidden="true">+</span></summary><p>GCash is the only currently accepted method. PayPal is coming soon but is not available yet. Official payment instructions should only be provided after a project quotation is reviewed and accepted.</p></details>
+          <details class="faq-item"><summary>Do I need to pay before receiving a quotation?<span aria-hidden="true">+</span></summary><p>No payment should be made just to request a quotation. The project scope, price, and terms should be discussed and agreed first.</p></details>
+          <details class="faq-item"><summary>Can I request a website within my budget?<span aria-hidden="true">+</span></summary><p>Yes. You can share a budget range. The studio will review whether the requested work can fit that range and explain any adjustments needed. A requested budget does not automatically determine the final price.</p></details>
+          <details class="faq-item"><summary>Can I submit a project online right now?<span aria-hidden="true">+</span></summary><p>The secure project ticket and client portal are still being developed. This version is a website prototype; it does not collect project submissions or personal information.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing-section" id="start-project">
+      <div class="container closing-inner">
+        <p class="eyebrow">EVERYTHING STARTS SOMEWHERE</p>
+        <h2>Have an idea?<br><span>Let's give it a place.</span></h2>
+        <p>The secure project request portal is part of a future release. For now, explore the site and its design direction. No real project submissions are collected yet.</p>
+        <button class="button button-light" type="button" id="portal-info-button">Project portal status <span aria-hidden="true">↗</span></button>
+        <div class="closing-orbit closing-orbit-one"></div><div class="closing-orbit closing-orbit-two"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">Z</span><span class="brand-name">ZeroDev <span>Studio</span></span></a>
+      <p>Started with zero. Built with purpose.</p>
+      <a class="back-top" href="#top">Back to top ↑</a>
+    </div>
+    <div class="container footer-bottom"><span>© <span id="current-year">2026</span> ZeroDev Studio. Public website prototype · v0.3</span><span>Designed with care · Built step by step</span></div>
+  </footer>
+
+  <dialog class="info-dialog concept-dialog" id="concept-dialog" aria-labelledby="concept-dialog-title">
+    <div class="dialog-content">
+      <button class="dialog-close" type="button" data-close-concept aria-label="Close concept details">×</button>
+      <span class="dialog-icon" aria-hidden="true">✳</span>
+      <p class="eyebrow" id="concept-dialog-category">SAMPLE CONCEPT</p>
+      <h2 id="concept-dialog-title">Concept details</h2>
+      <p id="concept-dialog-description"></p>
+      <p class="concept-dialog-list-title">Concept direction includes</p>
+      <ul class="concept-dialog-list" id="concept-dialog-features"></ul>
+      <p class="concept-dialog-note">This is a portfolio demonstration, not a completed client project.</p>
+      <button class="button button-primary" type="button" data-close-concept>Close details</button>
+    </div>
+  </dialog>
+
+  <dialog class="info-dialog" id="portal-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-content">
+      <button class="dialog-close" type="button" aria-label="Close dialog">×</button>
+      <span class="dialog-icon" aria-hidden="true">✳</span>
+      <p class="eyebrow">ZERO DEV STUDIO / NEXT RELEASE</p>
+      <h2 id="dialog-title">Explore the client portal preview.</h2>
+      <p>The v0.3 interface preview is ready to explore. Secure sign-in, real project tickets, private messaging, and connected notifications are still planned for later releases. This preview uses sample content only and does not collect personal information or process payments.</p>
+      <a class="button button-primary" href="portal/index.html">Open portal preview <span aria-hidden="true">↗</span></a>
+      <button class="button button-secondary dialog-done" type="button">Close</button>
+    </div>
+  </dialog>
+</body>
+</html>

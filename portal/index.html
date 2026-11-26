@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f9fc">
+  <script>
+    (function () {
+      try {
+        var preference = localStorage.getItem('zerodev-theme') || 'system';
+        var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var resolved = preference === 'dark' || (preference === 'system' && systemDark) ? 'dark' : 'light';
+        document.documentElement.dataset.themePreference = preference;
+        document.documentElement.dataset.theme = resolved;
+      } catch (error) {
+        document.documentElement.dataset.themePreference = 'system';
+        document.documentElement.dataset.theme = 'light';
+      }
+    }());
+  </script>
+  <meta name="description" content="Preview the ZeroDev Studio client workspace. This is a non-functional design demo with sample information only.">
+  <title>Client Workspace — ZeroDev Studio</title>
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/portal.css">
+  <link rel="stylesheet" href="../css/theme.css">
+  <script src="../js/theme.js" defer></script>
+  <script src="../js/portal.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#workspace-main">Skip to workspace</a>
+  <div class="preview-banner" role="note">
+    <span class="preview-dot" aria-hidden="true"></span>
+    <strong>DESIGN PREVIEW</strong>
+    <span>This workspace uses sample information. Accounts, messages, tickets, and notifications are not connected.</span>
+    <a href="../index.html">Back to public website <span aria-hidden="true">↗</span></a>
+  </div>
+
+  <div class="workspace-shell">
+    <aside class="sidebar" aria-label="Client workspace navigation">
+      <a class="brand" href="../index.html" aria-label="ZeroDev Studio homepage">
+        <span class="brand-mark" aria-hidden="true">Z</span>
+        <span class="brand-name">ZeroDev <span>Studio</span></span>
+      </a>
+
+      <div class="workspace-label">CLIENT WORKSPACE</div>
+      <div class="sample-user">
+        <div class="avatar" aria-hidden="true">SC</div>
+        <div><strong>Sample Client</strong><span>Preview account</span></div>
+      </div>
+
+      <nav class="workspace-nav" id="workspace-nav" aria-label="Workspace sections">
+        <button class="workspace-link is-active" type="button" data-panel="overview" aria-current="page"><span class="nav-icon" aria-hidden="true">▦</span>Overview</button>
+        <button class="workspace-link" type="button" data-panel="projects"><span class="nav-icon" aria-hidden="true">▤</span>My projects<span class="nav-count">1</span></button>
+        <button class="workspace-link" type="button" data-panel="messages"><span class="nav-icon" aria-hidden="true">✉</span>Messages<span class="nav-count nav-count-muted">2</span></button>
+        <button class="workspace-link" type="button" data-panel="notifications"><span class="nav-icon" aria-hidden="true">♧</span>Notifications<span class="notification-dot" aria-label="Unread sample notifications"></span></button>
+        <button class="workspace-link" type="button" data-panel="profile"><span class="nav-icon" aria-hidden="true">◉</span>Profile</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <span class="help-icon" aria-hidden="true">?</span>
+          <strong>Need a hand?</strong>
+          <p>Visit the public site to learn how projects are planned.</p>
+          <a href="../index.html#faq">Visit help & FAQ <span aria-hidden="true">↗</span></a>
+        </div>
+        <a class="sidebar-back" href="../index.html"><span aria-hidden="true">←</span> Back to website</a>
+      </div>
+    </aside>
+
+    <main class="workspace-main" id="workspace-main">
+      <header class="workspace-topbar">
+        <div>
+          <p class="topbar-eyebrow">ZERO DEV STUDIO <span>/</span> CLIENT AREA</p>
+          <h1 id="page-title">Overview</h1>
+        </div>
+        <div class="topbar-actions">
+          <div class="theme-picker theme-picker-portal">
+            <label for="portal-theme-select">Theme</label>
+            <select id="portal-theme-select" data-theme-select aria-label="Color theme">
+              <option value="system">System</option>
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+          </div>
+          <span class="preview-chip"><span></span> Preview mode</span>
+          <button class="topbar-avatar" type="button" aria-label="Open profile preview" data-open-profile>SC</button>
+        </div>
+      </header>
+
+      <div class="workspace-content">
+        <section class="panel-view is-visible" data-view="overview" aria-labelledby="overview-heading">
+          <div class="welcome-row reveal-item">
+            <div><p class="eyebrow">YOUR PROJECT SPACE</p><h2 id="overview-heading">Welcome back, Sample Client.</h2><p>Here’s a quick look at your example project and recent workspace activity.</p></div>
+            <a class="button button-primary" href="../index.html#start-project">Discuss a project <span aria-hidden="true">↗</span></a>
+          </div>
+
+          <div class="stat-grid reveal-item">
+            <article class="stat-card"><span class="stat-label">ACTIVE PROJECTS</span><strong>1</strong><span class="stat-foot"><i class="status-dot-small"></i> One sample project</span></article>
+            <article class="stat-card"><span class="stat-label">OPEN MESSAGES</span><strong>2</strong><span class="stat-foot">Example conversation</span></article>
+            <article class="stat-card"><span class="stat-label">NEXT MILESTONE</span><strong class="stat-date">Dec 04</strong><span class="stat-foot">Illustrative target date</span></article>
+          </div>
+
+          <div class="content-grid reveal-item">
+            <article class="surface-card project-summary">
+              <div class="card-heading"><div><p class="eyebrow">CURRENT PROJECT</p><h3>Business website concept</h3></div><span class="status-pill status-progress"><i></i> In progress</span></div>
+              <p class="project-reference">REFERENCE <strong>ZD-DEMO-001</strong></p>
+              <p class="project-description">A clean, responsive website concept for a small business, with service information and a clear contact path.</p>
+              <div class="progress-heading"><span>Example progress</span><strong>60%</strong></div>
+              <div class="progress-track" role="progressbar" aria-label="Example project progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"><span></span></div>
+              <div class="milestone-row"><span>Project kickoff</span><span>Design direction</span><span>Review</span><span>Handover</span></div>
+              <button class="text-action" type="button" data-open-panel="projects">View project details <span aria-hidden="true">→</span></button>
+            </article>
+
+            <article class="surface-card activity-card">
+              <div class="card-heading"><div><p class="eyebrow">LATEST ACTIVITY</p><h3>Recent updates</h3></div><span class="subtle-icon" aria-hidden="true">↗</span></div>
+              <ol class="activity-list">
+                <li><span class="activity-marker marker-blue"></span><div><strong>Design direction shared</strong><p>Example update · Nov 25</p></div></li>
+                <li><span class="activity-marker marker-green"></span><div><strong>Project details reviewed</strong><p>Example update · Nov 23</p></div></li>
+                <li><span class="activity-marker marker-gray"></span><div><strong>Project request received</strong><p>Example update · Nov 21</p></div></li>
+              </ol>
+              <p class="sample-note">All updates and dates shown here are fictional sample content.</p>
+            </article>
+          </div>
+
+          <article class="surface-card message-preview reveal-item">
+            <div class="card-heading"><div><p class="eyebrow">COMMUNICATION</p><h3>Latest message</h3></div><button class="text-action" type="button" data-open-panel="messages">Open messages <span aria-hidden="true">→</span></button></div>
+            <div class="message-preview-body"><div class="message-avatar">ZD</div><div><div class="message-meta"><strong>ZeroDev Studio</strong><span>Example · Nov 25, 2026</span></div><p>We’ve prepared an initial direction for the homepage. The next step in this example would be reviewing the layout and confirming the content.</p></div></div>
+          </article>
+        </section>
+
+        <section class="panel-view" data-view="projects" aria-labelledby="projects-heading" hidden>
+          <div class="page-intro"><p class="eyebrow">PROJECT TRACKER</p><h2 id="projects-heading">My projects</h2><p>Keep track of project stages, planned milestones, and shared details.</p></div>
+          <article class="surface-card project-detail-card reveal-item">
+            <div class="project-detail-top"><div><span class="project-reference">ZD-DEMO-001 · SAMPLE PROJECT</span><h3>Business website concept</h3><p>Small business website · Example project</p></div><span class="status-pill status-progress"><i></i> In progress</span></div>
+            <div class="detail-divider"></div>
+            <div class="detail-columns"><div><span class="detail-label">PROJECT TYPE</span><strong>Business website</strong></div><div><span class="detail-label">STARTED</span><strong>November 21, 2026</strong></div><div><span class="detail-label">TARGET REVIEW</span><strong>December 04, 2026</strong></div></div>
+            <div class="project-timeline">
+              <div class="timeline-step is-done"><span>✓</span><div><strong>Request received</strong><small>Example · Nov 21</small></div></div>
+              <div class="timeline-step is-done"><span>✓</span><div><strong>Scope discussion</strong><small>Example · Nov 23</small></div></div>
+              <div class="timeline-step is-current"><span>03</span><div><strong>Design direction</strong><small>Example · In progress</small></div></div>
+              <div class="timeline-step"><span>04</span><div><strong>Client review</strong><small>Upcoming in this example</small></div></div>
+              <div class="timeline-step"><span>05</span><div><strong>Final handover</strong><small>Upcoming in this example</small></div></div>
+            </div>
+          </article>
+          <div class="empty-next surface-card reveal-item"><div class="empty-icon">＋</div><div><h3>Have another idea?</h3><p>Start with a project discussion on the public website.</p></div><a class="button button-secondary" href="../index.html#start-project">Start a discussion <span aria-hidden="true">↗</span></a></div>
+        </section>
+
+        <section class="panel-view" data-view="messages" aria-labelledby="messages-heading" hidden>
+          <div class="page-intro"><p class="eyebrow">PRIVATE PROJECT DISCUSSIONS</p><h2 id="messages-heading">Messages</h2><p>A future release will connect project conversations to your account.</p></div>
+          <article class="surface-card conversation-card reveal-item">
+            <div class="conversation-header"><div class="message-avatar">ZD</div><div><strong>ZeroDev Studio</strong><span>Example project conversation · ZD-DEMO-001</span></div><span class="status-pill status-demo">Sample thread</span></div>
+            <div class="conversation-body">
+              <div class="date-divider"><span>November 25, 2026 · Example</span></div>
+              <div class="chat-message staff-message"><span class="chat-sender">ZeroDev Studio</span><p>We’ve prepared an initial homepage direction for the sample project. It focuses on a clear introduction, a short services overview, and a simple contact path.</p><time>10:15 AM</time></div>
+              <div class="chat-message client-message"><span class="chat-sender">Sample Client</span><p>That direction sounds good. I’d like the services section to be easy to find on mobile too.</p><time>10:42 AM</time></div>
+              <div class="chat-message staff-message"><span class="chat-sender">ZeroDev Studio</span><p>Absolutely. The mobile layout will keep the main navigation simple and make the services section easy to reach.</p><time>11:03 AM</time></div>
+            </div>
+            <div class="composer-preview"><span>Messaging is a design preview only.</span><button type="button" disabled aria-disabled="true">Send message</button></div>
+          </article>
+          <p class="prototype-disclaimer">Messages are fictional examples. No message can be sent or received in this version.</p>
+        </section>
+
+        <section class="panel-view" data-view="notifications" aria-labelledby="notifications-heading" hidden>
+          <div class="page-intro"><p class="eyebrow">WORKSPACE UPDATES</p><h2 id="notifications-heading">Notifications</h2><p>Project events and message updates will appear here when notifications are connected.</p></div>
+          <article class="surface-card notification-list reveal-item">
+            <div class="notification-row"><span class="notification-symbol symbol-blue">✉</span><div><strong>New sample message</strong><p>ZeroDev Studio added an update to Business website concept.</p><span>November 25, 2026 · Example</span></div><i class="unread-mark" aria-label="Sample unread indicator"></i></div>
+            <div class="notification-row"><span class="notification-symbol symbol-green">✓</span><div><strong>Project details reviewed</strong><p>The example project moved to the design direction stage.</p><span>November 23, 2026 · Example</span></div></div>
+            <div class="notification-row"><span class="notification-symbol symbol-violet">▤</span><div><strong>Project request received</strong><p>Your example request is now listed in the project tracker.</p><span>November 21, 2026 · Example</span></div></div>
+          </article>
+          <p class="prototype-disclaimer">These are static sample notifications. Email and browser notifications are not active.</p>
+        </section>
+
+        <section class="panel-view" data-view="profile" aria-labelledby="profile-heading" hidden>
+          <div class="page-intro"><p class="eyebrow">ACCOUNT DETAILS</p><h2 id="profile-heading">Profile</h2><p>Account settings will be available after secure sign-in is implemented.</p></div>
+          <article class="surface-card profile-card reveal-item">
+            <div class="profile-hero"><div class="profile-avatar">SC</div><div><h3>Sample Client</h3><p>Demo profile · No account exists</p></div></div>
+            <div class="detail-divider"></div>
+            <div class="profile-fields"><div><span class="detail-label">DISPLAY NAME</span><strong>Sample Client</strong></div><div><span class="detail-label">EMAIL</span><strong>sample.client@example.test</strong></div><div><span class="detail-label">ACCOUNT STATUS</span><strong><span class="status-pill status-demo">Preview only</span></strong></div></div>
+            <div class="profile-warning"><strong>Prototype notice</strong><p>This page does not have sign-in, profile editing, or account storage. Do not enter real personal information.</p></div>
+          </article>
+        </section>
+
+        <footer class="workspace-footer"><span>© <span id="current-year">2026</span> ZeroDev Studio</span><span>Client portal interface preview · v0.4</span><a href="../index.html">Public website ↗</a></footer>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
