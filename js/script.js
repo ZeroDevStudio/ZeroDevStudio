@@ -113,7 +113,7 @@ if (portalDialog && portalButton) {
     if (typeof portalDialog.showModal === 'function') {
       portalDialog.showModal();
     } else {
-      window.alert('The secure project portal is in development. This prototype does not collect project submissions or payments.');
+      window.alert('Start a project request from the secure project intake page. Real submissions require an activated backend. Payments are handled separately and are not collected on this website.');
     }
   });
 

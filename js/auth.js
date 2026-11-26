@@ -23,7 +23,7 @@
     guest: ['Access a guest project', 'Use the email address and project reference associated with your request.'],
     recovery: ['Reset your password', 'Enter the email address connected to your account.'],
     newpassword: ['Choose a new password', 'Create a new password for your account.'],
-    signedin: ['You are signed in', 'Your account is authenticated. The private project portal is not connected yet.']
+    signedin: ['You are signed in', 'Your account is authenticated. Open your private client workspace to manage project requests.']
   };
 
   let pendingEmail = '';
@@ -236,7 +236,7 @@
         if (signedInEmail) signedInEmail.textContent = data.user?.email || 'Your account';
         form.reset();
         showView('signedin');
-        showMessage('Authentication succeeded. Your project workspace is still a sample preview.', 'success');
+        showMessage('Authentication succeeded. Open your private client workspace to continue.', 'success');
         return;
       }
 
@@ -254,7 +254,7 @@
         resendTimer = null;
         pendingEmail = '';
         showView('signedin');
-        showMessage('Email verified successfully. Your account is authenticated.', 'success');
+        showMessage('Email verified successfully. Your account is authenticated. Open your client workspace to continue.', 'success');
         return;
       }
 
@@ -364,7 +364,7 @@
         } else {
           if (signedInEmail) signedInEmail.textContent = data.session.user?.email || 'Your account';
           showView('signedin');
-          showMessage('You are signed in. The private project workspace is not connected yet.', 'success');
+          showMessage('You are signed in. Your private project workspace is ready when the backend is configured.', 'success');
         }
       }
     }).catch(() => showMessage('The authentication service could not be reached. Check the project configuration and connection.', 'error'));

@@ -101,7 +101,7 @@
             <label class="auth-field">Full name<input type="text" name="name" autocomplete="name" placeholder="Your name" required></label>
             <label class="auth-field">Email address<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
             <label class="auth-field">Create password<input type="password" name="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" required><span class="auth-field-hint">The real service will require a strong, unique password and email verification.</span></label>
-            <label class="auth-check"><input type="checkbox" name="terms" required><span>I agree to the account terms and privacy notice presented by the service before registration.</span></label>
+            <label class="auth-check"><input type="checkbox" name="terms" required><span>I have read the <a href="../legal/terms.html" target="_blank" rel="noopener">terms draft</a> and <a href="../legal/privacy.html" target="_blank" rel="noopener">privacy notice draft</a>. I understand these documents require final review before live launch.</span></label>
             <button class="auth-submit" type="submit">Create account <span aria-hidden="true">→</span></button>
           </form>
         </section>
@@ -157,14 +157,15 @@
           <div class="verification-heading" aria-hidden="true"><span>✓</span></div>
           <p class="verification-copy">Authenticated account</p>
           <p class="verification-address" id="signed-in-email">Your account</p>
-          <p class="auth-field-hint">The client portal is still a sample interface. Private tickets, project records, and messages are not connected in this release.</p>
-          <button class="auth-submit" type="button" data-sign-out>Sign out</button>
+          <p class="auth-field-hint">Your verified account can open the private client workspace. Project tools become available when the owner has configured the production backend.</p>
+          <a class="auth-submit auth-submit-link" href="../portal/index.html">Open client workspace →</a>
+          <button class="auth-submit auth-submit-muted" type="button" data-sign-out>Sign out</button>
         </section>
 
         <p class="auth-message" id="auth-message" role="status" aria-live="polite"></p>
         <p class="auth-mode-notice" id="auth-mode-notice" role="status" aria-live="polite"></p>
-        <p class="auth-demo-note"><strong>Development notice:</strong> Account access is disabled in demo mode. Before enabling real users, configure the backend, email delivery, security policies, and privacy information. Never place private server keys or SMTP credentials in this website.</p>
-        <div class="auth-bottom-links"><a class="auth-preview-link" href="../portal/index.html">Open the sample client workspace ↗</a><a class="auth-preview-link" href="../support/index.html">Visit ZeroDev Support ↗</a></div>
+        <p class="auth-demo-note"><strong>Development notice:</strong> The release defaults to demo mode. Real account access requires the reviewed Supabase setup, email delivery, and database migrations. Never place private server keys or SMTP credentials in this website.</p>
+        <div class="auth-bottom-links"><a class="auth-preview-link" href="../portal/index.html">Open client workspace ↗</a><a class="auth-preview-link" href="../support/index.html">Visit ZeroDev Support ↗</a><a class="auth-preview-link" href="../legal/privacy.html">Privacy notice draft ↗</a></div>
       </div>
     </section>
   </main>

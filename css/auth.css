@@ -99,3 +99,7 @@ html[data-theme="dark"] .auth-message[data-kind="warning"] { border-color: #6653
 /* v0.9 — live email feedback and support access. */
 .auth-header-actions{flex-wrap:wrap}.auth-bottom-links{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px}.auth-bottom-links .auth-preview-link{margin-top:0}.resend-countdown{color:var(--muted,#64748b);font-size:8px;font-variant-numeric:tabular-nums}.verification-preview-warning[hidden]{display:none}.auth-text-button:disabled{opacity:.5;cursor:not-allowed}
 @media(max-width:520px){.auth-header-actions{gap:10px}.auth-header-actions .auth-back-link{font-size:9px}}
+
+.auth-submit-link { display:flex; align-items:center; justify-content:center; text-decoration:none; }
+.auth-submit-muted { margin-top:9px; border:1px solid var(--line,#e5eaf1)!important; background:transparent!important; color:var(--ink,#111827)!important; }
+.auth-check a { color:#2563eb; font-weight:800; text-decoration:underline; text-underline-offset:2px; }
