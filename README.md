@@ -1,70 +1,105 @@
-# ZeroDev Studio — v0.4
+# ZeroDev Studio — v0.9
 
-A lightweight, responsive website and client-account experience prototype built with vanilla HTML, CSS, and JavaScript. No framework, build step, remote fonts, analytics, or third-party JavaScript dependencies are required.
+A lightweight, responsive website and client-account prototype built with vanilla HTML, CSS, and JavaScript. No build step is required. Authentication remains in demo mode until a separate Supabase development project and email delivery are configured and reviewed.
 
 ## Run locally
 
 1. Open this `ZeroDevStudio` folder in Visual Studio Code.
-2. Open the root `index.html` with Live Server or in a browser.
-3. Use **Sign in** in the public navigation to open the account access preview.
-4. Use **Open the sample client workspace** to preview the v0.3 client dashboard.
+2. Run the root `index.html` with Live Server.
+3. Select **Sign in** to open account access.
+4. Keep `js/backend-config.js` in `mode: 'demo'` while previewing the UI. Account and project forms do not transmit registration or project details. The NEW26 promotion preview is saved in local browser storage only.
 
-## What's new in v0.4
+## Included from v0.6 — authentication foundation
 
-- Added an account access page at `account/index.html`.
-- Added sign-in, create-account, guest project access, and password recovery interface states.
-- Added clearly identified demo-only form feedback. Forms do not transmit or store information.
-- Added Light, Dark, and System appearance choices to the public website, account preview, and client workspace.
-- System mode follows the device/browser `prefers-color-scheme` setting, including changes made while the page is open.
-- Theme selection is saved in local browser storage and shared across pages on the same origin. If storage is unavailable, the page still applies the selected theme for the current visit.
-- Added dark color treatments for the public website, account interface, and client portal.
+- Added an optional Supabase Auth adapter using the `supabase-js` v2 client, loaded only when live mode is explicitly enabled and project settings are present.
+- Added a browser-safe backend configuration file containing placeholders only; no private credentials are included.
+- Added email/password sign-up, email OTP verification, sign-in, sign-out, resend confirmation, password-reset request, and recovery password update paths for a configured Supabase project.
+- Added a minimal Supabase profile-table migration with row-level security and a user-creation trigger.
+- Kept `mode: 'demo'` as the default. No real authentication or email is enabled in this packaged copy.
+- Added explicit notices explaining setup state and the fact that the client workspace remains a prototype.
 
-## Theme behavior
+## Authentication and email setup
 
-- **System:** follows the device or browser appearance preference and updates automatically when the operating-system preference changes.
-- **Light:** always uses the light appearance.
-- **Dark:** always uses the dark appearance.
+Read `docs/SUPABASE_SETUP.md` before changing any backend configuration. A parent/guardian or authorized adult must own and supervise the hosted backend, email provider, and real customer arrangements. Use a separate development project and test inboxes first.
 
-The selection is stored locally under `zerodev-theme`. Choosing System removes the fixed Light/Dark override and returns control to the device preference.
+Supabase's default email sender is for testing and has restrictions; the adult project owner must configure custom SMTP for reliable delivery. SMTP credentials and secret/service-role keys must never be placed in frontend files.
 
-## Authentication scope and security boundary
+## Current limitations
 
-The sign-in, account creation, guest access, and password recovery pages are interface prototypes only. No authentication is implemented. Form submissions are intercepted locally and display a preview message; no credentials or personal information are transmitted or stored. Do not enter real passwords or customer details.
-
-Before real accounts are enabled, configure a secure authentication provider and server-side authorization. The planned implementation notes are in `docs/AUTHENTICATION_DESIGN.md`. Guest access must use email verification and high-entropy, expiring access tokens; a ticket reference alone must not grant access. Password reset should use the provider's secure, time-limited flow. Never store plaintext passwords or expose private service keys in browser JavaScript.
-
-## Existing prototype limitations
-
-The client workspace uses fictional sample data. Tickets, projects, private messaging, staff permissions, file attachments, email/browser notifications, and payments are not connected. The website does not accept or process payments. Do not publish the prototype as a live customer portal.
-
-Real customer arrangements, payment accounts, and transactions require appropriate parent/guardian oversight.
+- Client portal pages still show fictional sample data. Signing in does not grant access to a protected portal.
+- Ticket creation, messages, project data, staff roles, guest-token access, browser notifications, file uploads, and payments are not implemented.
+- Guest access remains a preview-only form.
+- The project does not accept or process payments.
+- Before real users are invited, publish and review account terms and a privacy notice, and test security policies and email delivery.
 
 ## Folder structure
 
 ```text
 ZeroDevStudio/
 ├── index.html
-├── account/
-│   └── index.html
+├── account/index.html
 ├── assets/
-│   ├── fonts/
-│   ├── icons/
-│   └── images/
 ├── css/
-│   ├── auth.css
-│   ├── portal.css
-│   ├── style.css
-│   └── theme.css
+│   ├── budget-samples.css
+│   └── promo.css
 ├── js/
 │   ├── auth.js
+│   ├── backend-config.js
 │   ├── portal.js
+│   ├── promo.js
 │   ├── script.js
 │   └── theme.js
-├── portal/
-│   └── index.html
+├── portal/index.html
+├── samples/
+│   ├── starter/index.html
+│   ├── entry/index.html
+│   └── premium/index.html
 ├── staff/
+├── supabase/
+│   └── migrations/
+│       ├── 20261126000000_profiles.sql
+│       └── 20261126010000_promo_code_redemptions.sql
 └── docs/
     ├── AUTHENTICATION_DESIGN.md
+    ├── EMAIL_VERIFICATION_DESIGN.md
+    ├── SUPABASE_SETUP.md
     ├── CHANGELOG.md
+    ├── PRICING_EXAMPLES.md
     └── PROJECT_SPEC.md
 ```
+
+
+## v0.7 — NEW26 promotion
+
+- Added a shared discount-code ribbon to the public site, account page, and client portal.
+- Added a subtle NEW26 discovery Easter egg to every page experience.
+- Added a professional 10% discount price treatment: $20 / approx. ₱1,275 becomes $18 / approx. ₱1,148 after redemption.
+- Added demo-mode local preview plus secure Supabase RPC/database migration for one redemption per verified account.
+- Real account enforcement remains inactive until a test Supabase project is configured and the v0.7 migration is applied. See `docs/PROMO_CODE.md`.
+
+
+## v0.8 — three budget-level website demonstrations
+
+- Added three original, standalone sample websites under `samples/`.
+- Starter demo: $20 USD (approximately ₱1,275 PHP), showing a focused single-page concept.
+- Entry-level demo: ₱5,000 PHP, showing a more developed small-business site with distinct content areas.
+- Higher-scope demo: ₱10,000+ PHP, showing a more immersive custom brand experience.
+- Added a new public-site section comparing the three example budgets and linking to each live local demo.
+- Extended the NEW26 preview so the public-site budget cards show the relevant 10%-discounted example price after the code is applied. The code remains limited to one eligible project; the three displayed discounted totals are comparisons, not three separate redemptions.
+- Clearly labelled all sample brands and websites as fictional concepts. Prices are illustrative budgets, not fixed promises or guaranteed scopes.
+- No live forms, booking, accounts, or payment processing were added to the demos.
+
+
+## v0.9 — automated verification email and support center
+
+- Added the ZeroDev Support Center at `support/index.html` with an original brand mark, banner, support-desk profile, topic search, and account/project/pricing help articles.
+- Linked the support center from the public site, account screen, and client workspace.
+- Added a branded Supabase Confirm signup HTML template at `supabase/templates/confirm-signup.html`. The template uses `{{ .Token }}`; Supabase Auth generates and validates the code.
+- Improved verification email status messaging and added a client-side 60-second resend cooldown. Supabase server-side rate limits remain authoritative.
+- Added `docs/EMAIL_DELIVERY_SETUP.md` and `docs/SUPPORT_CENTER.md`.
+- The project remains in demo mode. Actual email delivery requires an adult-supervised Supabase development project, email confirmations enabled, the branded template installed, and a custom SMTP provider configured in Supabase.
+- SMTP credentials, provider API keys, and service-role secrets must never be placed in frontend files.
+
+## Run the Support Center
+
+Open `support/index.html` with Live Server. The help-topic search works locally. Ticket handling and live human support are not active in this prototype.

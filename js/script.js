@@ -130,7 +130,7 @@ if (portalDialog && portalButton) {
 // Gentle scroll-reveal effect for major public-site sections and cards.
 // Elements remain visible if motion is reduced or IntersectionObserver is unavailable.
 const revealTargets = document.querySelectorAll(
-  '.section-heading, .service-card, .concept-card, .price-card, .payment-panel, .process-grid article, .faq-item, .closing-inner'
+  '.section-heading, .service-card, .concept-card, .budget-tier-card, .price-card, .payment-panel, .process-grid article, .faq-item, .closing-inner'
 );
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

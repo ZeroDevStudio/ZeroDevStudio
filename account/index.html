@@ -19,10 +19,32 @@
   <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../css/theme.css">
   <link rel="stylesheet" href="../css/auth.css">
+  <link rel="stylesheet" href="../css/promo.css">
   <script src="../js/theme.js" defer></script>
+  <script src="../js/backend-config.js" defer></script>
+  <script src="../js/promo.js" defer></script>
   <script src="../js/auth.js" defer></script>
 </head>
 <body class="auth-page">
+  <section class="promo-ribbon" aria-label="ZeroDev Studio discount code">
+    <div class="promo-ribbon-inner">
+      <div class="promo-ribbon-copy">
+        <span class="promo-ribbon-icon" aria-hidden="true">✦</span>
+        <div><strong>Studio discovery offer</strong><span>Find the code on this page and redeem 10% off one eligible project.</span></div>
+      </div>
+      <form class="promo-redeem-form" data-promo-form>
+        <label class="visually-hidden" for="account-promo-code">Enter your studio discount code</label>
+        <input id="account-promo-code" name="code" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" maxlength="16" placeholder="Enter code" aria-label="Enter studio discount code" required>
+        <button type="submit">Apply code <span aria-hidden="true">→</span></button>
+      </form>
+      <div class="promo-ribbon-feedback">
+        <span class="promo-status" data-promo-status role="status" aria-live="polite"></span>
+        <a class="promo-signin-link" href="../account/index.html">Sign in to redeem</a>
+        <span class="promo-applied-chip" data-promo-applied hidden>NEW26 · 10% applied</span>
+      </div>
+    </div>
+  </section>
+
   <a class="skip-link" href="#auth-card">Skip to account access</a>
   <header class="auth-header">
     <a class="auth-brand" href="../index.html" aria-label="ZeroDev Studio homepage">
@@ -35,6 +57,7 @@
           <option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option>
         </select>
       </div>
+      <a class="auth-back-link" href="../support/index.html">Support center</a>
       <a class="auth-back-link" href="../index.html">Back to website ↗</a>
     </div>
   </header>
@@ -46,7 +69,7 @@
         <h1>Good ideas deserve a <span>clear path.</span></h1>
         <p class="auth-aside-copy">Sign in to follow project updates, keep conversations together, and stay connected with the ZeroDev Studio team.</p>
       </div>
-      <p class="auth-aside-foot">STARTED WITH ZERO. BUILT WITH PURPOSE.</p>
+      <p class="auth-aside-foot">STARTED WITH ZERO. BUILT WITH PURPOSE.<br><span class="promo-easter-egg">A small studio easter egg: <code>NEW26</code></span></p>
     </aside>
 
     <section class="auth-form-area" aria-label="Account access options">
@@ -62,7 +85,7 @@
         </div>
 
         <section class="auth-view" id="view-signin" role="tabpanel" aria-labelledby="tab-signin" data-auth-panel="signin">
-          <form class="auth-form" data-demo-form="signin">
+          <form class="auth-form" data-auth-form="signin">
             <label class="auth-field">Email address<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
             <label class="auth-field">Password<input type="password" name="password" autocomplete="current-password" placeholder="Enter your password" required></label>
             <div class="auth-inline-row"><span></span><button class="auth-text-button" type="button" data-auth-view="recovery">Forgot password?</button></div>
@@ -74,17 +97,37 @@
         </section>
 
         <section class="auth-view" id="view-register" role="tabpanel" aria-labelledby="tab-register" data-auth-panel="register" hidden>
-          <form class="auth-form" data-demo-form="register">
+          <form class="auth-form" data-auth-form="register">
             <label class="auth-field">Full name<input type="text" name="name" autocomplete="name" placeholder="Your name" required></label>
             <label class="auth-field">Email address<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
             <label class="auth-field">Create password<input type="password" name="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" required><span class="auth-field-hint">The real service will require a strong, unique password and email verification.</span></label>
-            <label class="auth-check"><input type="checkbox" name="terms" required><span>I understand this is a design preview and agree to the future account terms when provided.</span></label>
+            <label class="auth-check"><input type="checkbox" name="terms" required><span>I agree to the account terms and privacy notice presented by the service before registration.</span></label>
             <button class="auth-submit" type="submit">Create account <span aria-hidden="true">→</span></button>
           </form>
         </section>
 
+        <section class="auth-view" id="view-verify" role="tabpanel" aria-label="Email verification" data-auth-panel="verify" hidden>
+          <div class="verification-heading" aria-hidden="true"><span>✉</span></div>
+          <p class="verification-copy" id="verification-copy">A verification code is requested for:</p>
+          <p class="verification-address" id="verification-email">you@example.com</p>
+          <form class="auth-form" data-auth-form="verify">
+            <label class="auth-field verification-code-label" for="verification-code">Six-digit verification code
+              <input id="verification-code" type="text" name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" minlength="6" maxlength="6" placeholder="000000" aria-describedby="verification-hint" required>
+            </label>
+            <span class="auth-field-hint" id="verification-hint">This one-time code is checked by the authentication service. Use the newest code and never share it with anyone.</span>
+            <button class="auth-submit" type="submit">Verify email <span aria-hidden="true">→</span></button>
+          </form>
+          <div class="verification-actions">
+            <button class="auth-text-button" type="button" data-resend-verification>Resend code</button>
+            <span class="resend-countdown" id="resend-countdown" aria-live="polite"></span>
+            <span aria-hidden="true">·</span>
+            <button class="auth-text-button" type="button" data-auth-view="register">Change email address</button>
+          </div>
+          <p class="verification-preview-warning" id="verification-preview-warning">Preview only: no email has been sent and no code can be verified yet.</p>
+        </section>
+
         <section class="auth-view" id="view-guest" role="tabpanel" aria-labelledby="tab-guest" data-auth-panel="guest" hidden>
-          <form class="auth-form" data-demo-form="guest">
+          <form class="auth-form" data-auth-form="guest">
             <label class="auth-field">Project reference<input type="text" name="ticket" autocomplete="off" placeholder="Example: ZD-2026-0001" required></label>
             <label class="auth-field">Email address used for the request<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
             <span class="auth-field-hint">A future secure guest-access flow will verify your email and send a private link. A ticket number alone will never grant access.</span>
@@ -94,7 +137,7 @@
         </section>
 
         <section class="auth-view" id="view-recovery" role="tabpanel" aria-label="Password recovery" data-auth-panel="recovery" hidden>
-          <form class="auth-form" data-demo-form="recovery">
+          <form class="auth-form" data-auth-form="recovery">
             <label class="auth-field">Account email<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
             <span class="auth-field-hint">If an account exists, the real service will send a time-limited password reset link.</span>
             <button class="auth-submit" type="submit">Send reset instructions <span aria-hidden="true">→</span></button>
@@ -102,9 +145,26 @@
           <p class="auth-footnote"><button class="auth-text-button" type="button" data-auth-view="signin">← Back to sign in</button></p>
         </section>
 
+        <section class="auth-view" id="view-newpassword" role="tabpanel" aria-label="Choose a new password" data-auth-panel="newpassword" hidden>
+          <form class="auth-form" data-auth-form="new-password">
+            <label class="auth-field">New password<input type="password" name="password" autocomplete="new-password" minlength="10" placeholder="At least 10 characters" required></label>
+            <label class="auth-field">Confirm new password<input type="password" name="confirmPassword" autocomplete="new-password" minlength="10" placeholder="Enter it again" required></label>
+            <button class="auth-submit" type="submit">Update password <span aria-hidden="true">→</span></button>
+          </form>
+        </section>
+
+        <section class="auth-view" id="view-signedin" role="tabpanel" aria-label="Signed in account" data-auth-panel="signedin" hidden>
+          <div class="verification-heading" aria-hidden="true"><span>✓</span></div>
+          <p class="verification-copy">Authenticated account</p>
+          <p class="verification-address" id="signed-in-email">Your account</p>
+          <p class="auth-field-hint">The client portal is still a sample interface. Private tickets, project records, and messages are not connected in this release.</p>
+          <button class="auth-submit" type="button" data-sign-out>Sign out</button>
+        </section>
+
         <p class="auth-message" id="auth-message" role="status" aria-live="polite"></p>
-        <p class="auth-demo-note"><strong>Prototype notice:</strong> This page does not create accounts, send emails, or authenticate users. Do not enter real passwords or personal information here.</p>
-        <a class="auth-preview-link" href="../portal/index.html">Open the sample client workspace ↗</a>
+        <p class="auth-mode-notice" id="auth-mode-notice" role="status" aria-live="polite"></p>
+        <p class="auth-demo-note"><strong>Development notice:</strong> Account access is disabled in demo mode. Before enabling real users, configure the backend, email delivery, security policies, and privacy information. Never place private server keys or SMTP credentials in this website.</p>
+        <div class="auth-bottom-links"><a class="auth-preview-link" href="../portal/index.html">Open the sample client workspace ↗</a><a class="auth-preview-link" href="../support/index.html">Visit ZeroDev Support ↗</a></div>
       </div>
     </section>
   </main>

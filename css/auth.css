@@ -68,3 +68,34 @@ html[data-theme="dark"] .auth-guest-shortcut { border-color: #34465e; background
   .auth-tabs { gap: 2px; }
   .auth-tab { font-size: 8px; }
 }
+
+/* v0.5 — email verification step preview. */
+.verification-heading { display: grid; width: 54px; height: 54px; place-items: center; margin: 0 auto 15px; border: 1px solid #d8e5fb; border-radius: 16px; background: #eff5ff; color: #2563eb; font-size: 25px; }
+.verification-copy { margin: 0; color: var(--muted, #64748b); font-size: 10px; text-align: center; }
+.verification-address { margin: 5px 0 20px; color: var(--ink, #111827); font-size: 13px; font-weight: 850; text-align: center; overflow-wrap: anywhere; }
+.verification-code-label { text-align: center; }
+.verification-code-label input { min-height: 55px; text-align: center; font-size: 22px; font-weight: 850; letter-spacing: .45em; padding-left: .75em; font-variant-numeric: tabular-nums; }
+.verification-actions { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 17px; color: var(--muted, #64748b); font-size: 10px; }
+.verification-preview-warning { margin: 16px 0 0; border: 1px solid #f0dfb8; border-radius: 9px; padding: 10px 12px; background: #fffaf0; color: #80672e; font-size: 9px; line-height: 1.65; text-align: center; }
+html[data-theme="dark"] .verification-heading { border-color: #304769; background: #172944; color: #a9c7ff; }
+html[data-theme="dark"] .verification-preview-warning { border-color: #665333; background: #2a2418; color: #e2cc9a; }
+
+/* v0.6 — authentication integration states. */
+.auth-mode-notice { margin: 12px 0 0; border: 1px solid var(--line, #e5eaf1); border-radius: 9px; padding: 10px 12px; background: var(--soft, #f7f9fc); color: var(--muted, #64748b); font-size: 9px; line-height: 1.7; }
+.auth-mode-notice[data-kind="warning"] { border-color: #efd7a6; background: #fff9ec; color: #805d1b; }
+.auth-mode-notice[data-kind="live"] { border-color: #b7e2cd; background: #effaf4; color: #216943; }
+.auth-message[data-kind="error"] { border-color: #f0c4c4; background: #fff1f1; color: #8a2828; }
+.auth-message[data-kind="success"] { border-color: #b7e2cd; background: #effaf4; color: #216943; }
+.auth-submit:disabled { opacity: .65; cursor: wait; transform: none; }
+html[data-theme="dark"] .auth-mode-notice { border-color: #34465e; background: #111d30; color: #a8b6cb; }
+html[data-theme="dark"] .auth-mode-notice[data-kind="warning"] { border-color: #665333; background: #2a2418; color: #e2cc9a; }
+html[data-theme="dark"] .auth-mode-notice[data-kind="live"] { border-color: #28583e; background: #14291f; color: #a9dfbf; }
+html[data-theme="dark"] .auth-message[data-kind="error"] { border-color: #683838; background: #301d22; color: #f3b8b8; }
+html[data-theme="dark"] .auth-message[data-kind="success"] { border-color: #28583e; background: #14291f; color: #a9dfbf; }
+
+.auth-message[data-kind="warning"] { border-color: #efd7a6; background: #fff9ec; color: #805d1b; }
+html[data-theme="dark"] .auth-message[data-kind="warning"] { border-color: #665333; background: #2a2418; color: #e2cc9a; }
+
+/* v0.9 — live email feedback and support access. */
+.auth-header-actions{flex-wrap:wrap}.auth-bottom-links{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px}.auth-bottom-links .auth-preview-link{margin-top:0}.resend-countdown{color:var(--muted,#64748b);font-size:8px;font-variant-numeric:tabular-nums}.verification-preview-warning[hidden]{display:none}.auth-text-button:disabled{opacity:.5;cursor:not-allowed}
+@media(max-width:520px){.auth-header-actions{gap:10px}.auth-header-actions .auth-back-link{font-size:9px}}

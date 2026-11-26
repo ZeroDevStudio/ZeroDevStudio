@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b31">
+  <meta name="description" content="Find account, verification, project, and pricing guidance from the ZeroDev Studio Support Center.">
+  <title>Support Center — ZeroDev Studio</title>
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="../css/support.css">
+  <script src="../js/theme.js" defer></script>
+  <script src="../js/support.js" defer></script>
+</head>
+<body class="support-page">
+  <a class="support-skip" href="#support-main">Skip to support content</a>
+  <header class="support-header">
+    <div class="support-header-inner">
+      <a class="support-brand" href="../index.html" aria-label="ZeroDev Studio home">
+        <img src="../assets/icons/zerodev-support.svg" alt="" width="42" height="42">
+        <span><strong>ZeroDev</strong><small>SUPPORT CENTER</small></span>
+      </a>
+      <nav class="support-nav" aria-label="Support navigation">
+        <a class="is-current" href="index.html" aria-current="page">Help center</a>
+        <a href="../account/index.html">Account</a>
+        <a href="../index.html">Studio website</a>
+      </nav>
+      <div class="theme-picker support-theme-picker">
+        <label for="support-theme-select">Theme</label>
+        <select id="support-theme-select" data-theme-select aria-label="Color theme">
+          <option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main id="support-main">
+    <section class="support-hero" aria-labelledby="support-title">
+      <div class="support-hero-inner">
+        <p class="support-eyebrow"><span></span> ZERO DEV STUDIO / HELP DESK</p>
+        <h1 id="support-title">How can we <em>help you?</em></h1>
+        <p class="support-hero-copy">Find clear answers about your account, email verification, website projects, and pricing.</p>
+        <form class="support-search" role="search" data-support-search-form>
+          <label class="visually-hidden" for="support-search-input">Search support topics</label>
+          <span aria-hidden="true">⌕</span>
+          <input id="support-search-input" type="search" placeholder="Search for help…" autocomplete="off">
+          <button type="submit">Search</button>
+        </form>
+        <p class="support-search-hint">Popular topics: <button type="button" data-search-term="verification">Email verification</button><button type="button" data-search-term="pricing">Pricing</button><button type="button" data-search-term="account">Account access</button></p>
+      </div>
+    </section>
+
+    <section class="support-main-grid" aria-label="Support resources">
+      <div class="support-content-column">
+        <div class="support-section-heading">
+          <div><p class="support-kicker">SUPPORT LIBRARY</p><h2>Browse help topics</h2><p>Choose a topic to see the relevant guidance.</p></div>
+          <span class="article-count" data-article-count>6 ARTICLES</span>
+        </div>
+
+        <div class="support-topic-grid" data-support-topics>
+          <a class="support-topic-card" href="#account-help" data-topic-card data-search="account sign in login password access profile" data-group="account">
+            <span class="topic-icon topic-blue" aria-hidden="true">◉</span><strong>Account &amp; security</strong><span>Sign-in, registration, and account protection</span><b>Explore topics ↗</b>
+          </a>
+          <a class="support-topic-card" href="#verification-help" data-topic-card data-search="verification email code otp inbox spam resend" data-group="verification">
+            <span class="topic-icon topic-teal" aria-hidden="true">✉</span><strong>Email verification</strong><span>Confirmation codes and email delivery</span><b>Explore topics ↗</b>
+          </a>
+          <a class="support-topic-card" href="#project-help" data-topic-card data-search="project website service request ticket deadline budget" data-group="project">
+            <span class="topic-icon topic-violet" aria-hidden="true">▤</span><strong>Projects &amp; websites</strong><span>Project scope, examples, and requests</span><b>Explore topics ↗</b>
+          </a>
+          <a class="support-topic-card" href="#pricing-help" data-topic-card data-search="pricing quotation budget gcash paypal discount payment" data-group="pricing">
+            <span class="topic-icon topic-gold" aria-hidden="true">₱</span><strong>Pricing &amp; payments</strong><span>Budgets, quotations, and payment notices</span><b>Explore topics ↗</b>
+          </a>
+        </div>
+
+        <div class="support-article-list" data-support-articles>
+          <section class="support-article-group" id="account-help" data-article-group="account">
+            <div class="article-group-heading"><span class="topic-icon topic-blue">◉</span><div><h3>Account &amp; security</h3><p>Keep your account access safe.</p></div></div>
+            <details class="support-article" data-article data-search="create account register sign up">
+              <summary>How do I create a ZeroDev Studio account?</summary>
+              <p>Open the Account page, choose Create account, and enter your name, email address, and a unique password. In the live service, the authentication system sends a one-time confirmation code to your email before the address is verified.</p>
+            </details>
+            <details class="support-article" data-article data-search="password reset forgot password recovery">
+              <summary>What should I do if I forget my password?</summary>
+              <p>Use the Forgot password option on the account page. The live service will request a password-reset message. Never send your password or verification code to anyone claiming to be support.</p>
+            </details>
+          </section>
+
+          <section class="support-article-group" id="verification-help" data-article-group="verification">
+            <div class="article-group-heading"><span class="topic-icon topic-teal">✉</span><div><h3>Email verification</h3><p>Understand confirmation codes and delivery.</p></div></div>
+            <details class="support-article" data-article data-search="email code otp not received inbox spam verification">
+              <summary>I didn't receive my verification code. What can I check?</summary>
+              <p>Check the email address you entered, then look in Spam, Junk, or Promotions. Wait before requesting another code. If delivery still fails, the service owner should check the authentication email settings and SMTP provider logs. The demo website does not send real email.</p>
+            </details>
+            <details class="support-article" data-article data-search="resend expired code one time password">
+              <summary>Can I request another verification code?</summary>
+              <p>Yes. The live account screen includes a resend option with a cooldown. A previously issued code may stop working after it expires or a newer code is requested. Use only the newest code and never share it.</p>
+            </details>
+          </section>
+
+          <section class="support-article-group" id="project-help" data-article-group="project">
+            <div class="article-group-heading"><span class="topic-icon topic-violet">▤</span><div><h3>Projects &amp; websites</h3><p>Understand what goes into a website request.</p></div></div>
+            <details class="support-article" data-article data-search="project request ticket website brief scope">
+              <summary>Can I submit a project request right now?</summary>
+              <p>The project request and ticket system are still being developed. You can explore the interface and sample websites, but this version does not accept or store real project tickets.</p>
+            </details>
+          </section>
+
+          <section class="support-article-group" id="pricing-help" data-article-group="pricing">
+            <div class="article-group-heading"><span class="topic-icon topic-gold">₱</span><div><h3>Pricing &amp; payments</h3><p>Understand sample budgets and payment rules.</p></div></div>
+            <details class="support-article" data-article data-search="pricing quotation budget 20 5000 10000">
+              <summary>Are the example prices fixed packages?</summary>
+              <p>No. The $20 starter, ₱5,000 entry-level, and ₱10,000+ premium examples are illustrative starting budgets. The final quotation depends on agreed scope, page count, content, design, and functionality.</p>
+            </details>
+            <details class="support-article" data-article data-search="gcash paypal payment discount new26">
+              <summary>Which payment methods are accepted?</summary>
+              <p>The website currently presents GCash as the only planned payment method, with PayPal marked as coming soon. No real payment is collected by this prototype. Never share your GCash PIN, password, or OTP.</p>
+            </details>
+          </section>
+        </div>
+        <p class="support-no-results" data-no-results hidden>No matching help topics. Try a different search phrase.</p>
+      </div>
+
+      <aside class="support-side-column">
+        <article class="agent-card">
+          <div class="agent-banner" role="img" aria-label="Abstract blue support banner"><span>ZERO DEV STUDIO</span><b>HELP DESK</b></div>
+          <div class="agent-card-body">
+            <div class="agent-profile-row">
+              <img class="agent-avatar" src="../assets/icons/zerodev-support.svg" alt="ZeroDev Support logo" width="62" height="62">
+              <div><h2>ZeroDev Support</h2><p>Official support desk</p></div>
+            </div>
+            <span class="agent-status"><i></i> Support center preview</span>
+            <p class="agent-description">The ZeroDev Support Desk is the help point for account access, email verification, project requests, and service questions. Account-security messages are sent automatically by the authentication service when live delivery is enabled.</p>
+            <div class="agent-divider"></div>
+            <div class="agent-facts"><div><span>SUPPORT CHANNEL</span><strong>Help center &amp; account email</strong></div><div><span>LIVE TICKET REPLIES</span><strong>Not available yet</strong></div></div>
+            <a class="agent-button" href="../account/index.html">Go to account access <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="support-safety-card">
+          <div class="safety-symbol">✓</div>
+          <h3>Keep your account secure</h3>
+          <p>ZeroDev Support will never ask you to disclose your password, email verification code, GCash PIN, or OTP.</p>
+        </article>
+
+        <article class="support-status-card">
+          <p class="support-kicker">SERVICE STATUS</p><strong><span></span> Prototype stage</strong>
+          <p>The help center and automated account-email design are ready for testing. Real ticket handling still needs a secure backend.</p>
+        </article>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="support-footer">
+    <a class="support-brand" href="../index.html"><img src="../assets/icons/zerodev-support.svg" alt="" width="34" height="34"><span><strong>ZeroDev</strong><small>STUDIO</small></span></a>
+    <p>Independent support experience by ZeroDev Studio. Not affiliated with Steam or Valve.</p>
+    <a href="../index.html">Return to studio ↗</a>
+  </footer>
+</body>
+</html>

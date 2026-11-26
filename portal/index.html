@@ -23,10 +23,32 @@
   <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../css/portal.css">
   <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="../css/promo.css">
   <script src="../js/theme.js" defer></script>
+  <script src="../js/backend-config.js" defer></script>
+  <script src="../js/promo.js" defer></script>
   <script src="../js/portal.js" defer></script>
 </head>
 <body>
+  <section class="promo-ribbon" aria-label="ZeroDev Studio discount code">
+    <div class="promo-ribbon-inner">
+      <div class="promo-ribbon-copy">
+        <span class="promo-ribbon-icon" aria-hidden="true">✦</span>
+        <div><strong>Studio discovery offer</strong><span>Find the code on this page and redeem 10% off one eligible project.</span></div>
+      </div>
+      <form class="promo-redeem-form" data-promo-form>
+        <label class="visually-hidden" for="portal-promo-code">Enter your studio discount code</label>
+        <input id="portal-promo-code" name="code" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" maxlength="16" placeholder="Enter code" aria-label="Enter studio discount code" required>
+        <button type="submit">Apply code <span aria-hidden="true">→</span></button>
+      </form>
+      <div class="promo-ribbon-feedback">
+        <span class="promo-status" data-promo-status role="status" aria-live="polite"></span>
+        <a class="promo-signin-link" href="../account/index.html">Sign in to redeem</a>
+        <span class="promo-applied-chip" data-promo-applied hidden>NEW26 · 10% applied</span>
+      </div>
+    </div>
+  </section>
+
   <a class="skip-link" href="#workspace-main">Skip to workspace</a>
   <div class="preview-banner" role="note">
     <span class="preview-dot" aria-hidden="true"></span>
@@ -60,8 +82,8 @@
         <div class="help-card">
           <span class="help-icon" aria-hidden="true">?</span>
           <strong>Need a hand?</strong>
-          <p>Visit the public site to learn how projects are planned.</p>
-          <a href="../index.html#faq">Visit help & FAQ <span aria-hidden="true">↗</span></a>
+          <p>Browse account, project, and payment help in the support center.</p>
+          <a href="../support/index.html">Visit support center <span aria-hidden="true">↗</span></a>
         </div>
         <a class="sidebar-back" href="../index.html"><span aria-hidden="true">←</span> Back to website</a>
       </div>
@@ -180,7 +202,7 @@
           </article>
         </section>
 
-        <footer class="workspace-footer"><span>© <span id="current-year">2026</span> ZeroDev Studio</span><span>Client portal interface preview · v0.4</span><a href="../index.html">Public website ↗</a></footer>
+        <footer class="workspace-footer"><span>© <span id="current-year">2026</span> ZeroDev Studio</span><span>Client portal interface preview · v0.9</span><span class="promo-easter-egg">Studio easter egg: <code>NEW26</code></span><a href="../support/index.html">Support center ↗</a><a href="../index.html">Public website ↗</a></footer>
       </div>
     </main>
   </div>

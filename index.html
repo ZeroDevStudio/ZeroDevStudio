@@ -23,10 +23,33 @@
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/promo.css">
+  <link rel="stylesheet" href="css/budget-samples.css">
   <script src="js/theme.js" defer></script>
+  <script src="js/backend-config.js" defer></script>
+  <script src="js/promo.js" defer></script>
   <script src="js/script.js" defer></script>
 </head>
 <body>
+  <section class="promo-ribbon" aria-label="ZeroDev Studio discount code">
+    <div class="promo-ribbon-inner">
+      <div class="promo-ribbon-copy">
+        <span class="promo-ribbon-icon" aria-hidden="true">✦</span>
+        <div><strong>Studio discovery offer</strong><span>Find the code on this page and redeem 10% off one eligible project.</span></div>
+      </div>
+      <form class="promo-redeem-form" data-promo-form>
+        <label class="visually-hidden" for="public-promo-code">Enter your studio discount code</label>
+        <input id="public-promo-code" name="code" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" maxlength="16" placeholder="Enter code" aria-label="Enter studio discount code" required>
+        <button type="submit">Apply code <span aria-hidden="true">→</span></button>
+      </form>
+      <div class="promo-ribbon-feedback">
+        <span class="promo-status" data-promo-status role="status" aria-live="polite"></span>
+        <a class="promo-signin-link" href="account/index.html">Sign in to redeem</a>
+        <span class="promo-applied-chip" data-promo-applied hidden>NEW26 · 10% applied</span>
+      </div>
+    </div>
+  </section>
+
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header" id="top">
@@ -51,9 +74,11 @@
         </div>
         <a href="#services">Services</a>
         <a href="#work">Our work</a>
+        <a href="#budget-samples">Budget examples</a>
         <a href="#pricing">Pricing</a>
         <a href="#process">Process</a>
         <a href="#faq">FAQ</a>
+        <a href="support/index.html">Support</a>
         <a class="portal-nav-link" href="account/index.html">Sign in</a>
         <a class="nav-cta" href="#start-project">Start a project <span aria-hidden="true">↗</span></a>
       </nav>
@@ -199,6 +224,70 @@
       </div>
     </section>
 
+    <section class="budget-samples-section section-space" id="budget-samples">
+      <div class="container">
+        <div class="section-heading split-heading budget-heading">
+          <div><p class="eyebrow">THREE SAMPLE WEBSITE DIRECTIONS</p><h2>Different budgets.<br><span>Different possibilities.</span></h2></div>
+          <p class="section-intro">Explore three fictional website demos to see how the design direction and example scope can grow with a project budget. These are illustrations, not fixed packages or guaranteed deliverables.</p>
+        </div>
+        <div class="budget-note"><span class="budget-note-mark">i</span><p><strong>How to read these examples:</strong> each price is an example starting budget. Final quotations depend on the agreed pages, content, features, design complexity, and timeline. NEW26 gives 10% off <strong>one</strong> eligible project; applying it shows the example total for the tier you choose.</p></div>
+
+        <div class="budget-tier-grid">
+          <article class="budget-tier-card tier-starter">
+            <div class="tier-preview tier-preview-starter" aria-hidden="true">
+              <div class="mini-window"><div class="mini-window-top"><i></i><i></i><i></i><span>morrow.coffee</span></div><div class="mini-starter-brand">MORROW COFFEE</div><div class="mini-starter-title">A little pause in your <em>everyday.</em></div><div class="mini-starter-line"></div><div class="mini-starter-button">FIND YOUR CUP</div><div class="mini-starter-circle"></div></div>
+            </div>
+            <div class="tier-card-body">
+              <div class="tier-title-row"><span class="tier-eyebrow">01 / STARTER</span><span class="tier-level">ESSENTIAL</span></div>
+              <h3>A clean place to begin.</h3>
+              <p class="tier-description">A straightforward single-page website for a simple idea, personal presence, or small service.</p>
+              <div class="tier-pricing" data-promo-tier>
+                <div class="tier-price-line"><div class="tier-price-value" data-tier-standard><strong>$20</strong><span>USD · approx. ₱1,275 PHP</span></div><div class="tier-price-value tier-price-sale" data-tier-discounted hidden><strong>$18</strong><span>USD · approx. ₱1,148 PHP</span></div><span class="promo-discount-badge tier-discount-badge" data-tier-badge hidden>10% OFF</span></div>
+                <div class="tier-original-row" data-tier-original hidden><del>Regular example budget: $20 USD</del></div>
+              </div>
+              <ul class="tier-feature-list"><li>One focused page</li><li>Core business or personal information</li><li>Clear contact or action link</li><li>Mobile-friendly layout</li></ul>
+              <a class="tier-demo-link" href="samples/starter/index.html">Explore the starter demo <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="budget-tier-card tier-entry">
+            <div class="tier-preview tier-preview-entry" aria-hidden="true">
+              <div class="entry-mini-window"><div class="entry-mini-nav"><b>NORTHLINE</b><span>ABOUT&nbsp;&nbsp; SERVICES&nbsp;&nbsp; CONTACT</span></div><div class="entry-mini-copy"><small>OUTDOOR LIVING</small><b>Make room<br>for the outside.</b><i></i></div><div class="entry-mini-hill"></div><div class="entry-mini-sun"></div></div>
+            </div>
+            <div class="tier-card-body">
+              <div class="tier-title-row"><span class="tier-eyebrow">02 / ENTRY LEVEL</span><span class="tier-level">MORE ROOM</span></div>
+              <h3>More room to tell your story.</h3>
+              <p class="tier-description">A more developed small-business website with distinct content areas and a stronger visual identity.</p>
+              <div class="tier-pricing" data-promo-tier>
+                <div class="tier-price-line"><div class="tier-price-value" data-tier-standard><strong>₱5,000</strong><span>PHP · example budget</span></div><div class="tier-price-value tier-price-sale" data-tier-discounted hidden><strong>₱4,500</strong><span>PHP · after 10% discount</span></div><span class="promo-discount-badge tier-discount-badge" data-tier-badge hidden>10% OFF</span></div>
+                <div class="tier-original-row" data-tier-original hidden><del>Regular example budget: ₱5,000</del></div>
+              </div>
+              <ul class="tier-feature-list"><li>Several pages or expanded sections</li><li>Services, about, and contact areas</li><li>More tailored colors and typography</li><li>Responsive navigation and layout</li></ul>
+              <a class="tier-demo-link" href="samples/entry/index.html">Explore the entry demo <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="budget-tier-card tier-premium">
+            <div class="tier-preview tier-preview-premium" aria-hidden="true">
+              <div class="premium-mini-window"><div class="premium-mini-nav">AUREL<span>.</span><small>THE PRIVATE STAY</small></div><div class="premium-mini-rings"></div><div class="premium-mini-copy"><small>AN EXCEPTIONAL ESCAPE</small><b>Find your<br><em>own horizon.</em></b><i>DISCOVER AUREL ↗</i></div></div>
+            </div>
+            <div class="tier-card-body">
+              <div class="tier-title-row"><span class="tier-eyebrow">03 / HIGHER SCOPE</span><span class="tier-level">CUSTOM</span></div>
+              <h3>A more complete brand experience.</h3>
+              <p class="tier-description">A higher-scope concept with richer storytelling, custom sections, and room for more detailed interactions.</p>
+              <div class="tier-pricing" data-promo-tier>
+                <div class="tier-price-line"><div class="tier-price-value" data-tier-standard><strong>₱10,000+</strong><span>PHP · example starting budget</span></div><div class="tier-price-value tier-price-sale" data-tier-discounted hidden><strong>₱9,000+</strong><span>PHP · after 10% discount</span></div><span class="promo-discount-badge tier-discount-badge" data-tier-badge hidden>10% OFF</span></div>
+                <div class="tier-original-row" data-tier-original hidden><del>Regular example budget: ₱10,000+</del></div>
+              </div>
+              <ul class="tier-feature-list"><li>Expanded multi-page structure</li><li>More custom visual design and sections</li><li>Richer transitions and interactions</li><li>More detailed content presentation</li></ul>
+              <a class="tier-demo-link" href="samples/premium/index.html">Explore the premium demo <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        </div>
+        <p class="budget-disclaimer">All three websites are fictional demonstration concepts created to show possible design directions. The demos do not include live account systems, bookings, payment processing, or working enquiry backends. A higher budget does not automatically guarantee every listed feature; the final scope must be agreed in writing.</p>
+      </div>
+    </section>
+
     <section class="pricing-section section-space" id="pricing">
       <div class="container pricing-layout">
         <div class="pricing-copy">
@@ -213,10 +302,15 @@
         </div>
         <div class="price-card">
           <div class="price-card-top"><span>WEBSITE PROJECTS</span><span class="price-spark">✳</span></div>
-          <p class="price-label">Starting at</p>
-          <div class="price-main">$20<span> USD</span></div>
-          <div class="price-php">Approximately <b>₱1,275 PHP</b></div>
-          <p class="price-disclaimer">PHP estimate based on the indicative rate in the approved v1.1 specification. Actual conversion and payment rates may change.</p>
+          <div class="promo-price-display" data-promo-price>
+          <div class="price-heading-row"><p class="price-label">Starting at</p><span class="promo-discount-badge" data-promo-badge hidden>10% OFF</span></div>
+          <div class="promo-original-row" data-promo-original hidden><del>$20 USD</del><del>₱1,275 PHP</del></div>
+          <div class="price-main" data-price-standard>$20<span> USD</span></div>
+          <div class="price-main promo-price-sale" data-price-discounted hidden>$18<span> USD</span></div>
+          <div class="price-php">Approximately <b data-price-php-standard>₱1,275 PHP</b><b data-price-php-discount hidden>₱1,148 PHP</b></div>
+          <p class="price-disclaimer">PHP amounts are estimates based on the indicative rate in the approved v1.1 specification. Actual conversion and payment rates may change.</p>
+          <p class="promo-price-note" data-promo-price-note hidden>NEW26 has been applied to this account's eligible starting-price offer. A custom quotation will show its own discount breakdown.</p>
+          </div>
           <div class="price-divider"></div>
           <p class="included-title">Your final quotation may depend on:</p>
           <ul class="price-list">
@@ -263,10 +357,12 @@
       <div class="container faq-layout">
         <div><p class="eyebrow">GOOD TO KNOW</p><h2>Questions, <span>answered.</span></h2><p class="section-intro">A few details to make the process clearer before a project begins.</p></div>
         <div class="faq-list">
-          <details class="faq-item"><summary>Is ₱1,275 the final price for every website?<span aria-hidden="true">+</span></summary><p>No. It is an approximate PHP equivalent of the $20 USD starting price in the approved specification. The final quotation depends on your project's pages, features, design, and overall scope.</p></details>
+          <details class="faq-item"><summary>Is ₱1,275 the final price for every website?<span aria-hidden="true">+</span></summary><p>No. It is the approximate PHP equivalent of the $20 USD Starter example. The sample gallery also shows an Entry-level example at ₱5,000 and a higher-scope concept from ₱10,000+. These are illustrative budgets, not fixed packages; the final quotation depends on the agreed pages, features, design, and overall scope.</p></details>
           <details class="faq-item"><summary>What payment methods are available?<span aria-hidden="true">+</span></summary><p>GCash is the only currently accepted method. PayPal is coming soon but is not available yet. Official payment instructions should only be provided after a project quotation is reviewed and accepted.</p></details>
           <details class="faq-item"><summary>Do I need to pay before receiving a quotation?<span aria-hidden="true">+</span></summary><p>No payment should be made just to request a quotation. The project scope, price, and terms should be discussed and agreed first.</p></details>
           <details class="faq-item"><summary>Can I request a website within my budget?<span aria-hidden="true">+</span></summary><p>Yes. You can share a budget range. The studio will review whether the requested work can fit that range and explain any adjustments needed. A requested budget does not automatically determine the final price.</p></details>
+          <details class="faq-item"><summary>How does the NEW26 offer work?<span aria-hidden="true">+</span></summary><p>Find NEW26 on the public website, account page, or client portal and enter it in the code box at the top. Each verified account can redeem it once for 10% off one eligible project quotation. The quotation will show the original amount, discount, and final total.</p></details>
+          <details class="faq-item"><summary>Can I use NEW26 more than once?<span aria-hidden="true">+</span></summary><p>No. The offer is limited to one redemption per verified account. In the live service, this is enforced by the backend rather than by a browser-only setting.</p></details>
           <details class="faq-item"><summary>Can I submit a project online right now?<span aria-hidden="true">+</span></summary><p>The secure project ticket and client portal are still being developed. This version is a website prototype; it does not collect project submissions or personal information.</p></details>
         </div>
       </div>
@@ -287,9 +383,10 @@
     <div class="container footer-top">
       <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">Z</span><span class="brand-name">ZeroDev <span>Studio</span></span></a>
       <p>Started with zero. Built with purpose.</p>
+      <a class="back-top" href="support/index.html">Support center ↗</a>
       <a class="back-top" href="#top">Back to top ↑</a>
     </div>
-    <div class="container footer-bottom"><span>© <span id="current-year">2026</span> ZeroDev Studio. Public website prototype · v0.3</span><span>Designed with care · Built step by step</span></div>
+    <div class="container footer-bottom"><span>© <span id="current-year">2026</span> ZeroDev Studio. Public website prototype · v0.9</span><span>Designed with care · Built step by step <span class="promo-easter-egg">Studio easter egg: <code>NEW26</code></span></span></div>
   </footer>
 
   <dialog class="info-dialog concept-dialog" id="concept-dialog" aria-labelledby="concept-dialog-title">
@@ -312,7 +409,7 @@
       <span class="dialog-icon" aria-hidden="true">✳</span>
       <p class="eyebrow">ZERO DEV STUDIO / NEXT RELEASE</p>
       <h2 id="dialog-title">Explore the client portal preview.</h2>
-      <p>The v0.3 interface preview is ready to explore. Secure sign-in, real project tickets, private messaging, and connected notifications are still planned for later releases. This preview uses sample content only and does not collect personal information or process payments.</p>
+      <p>The client portal interface preview is ready to explore. Secure sign-in, email verification, real project tickets, private messaging, and connected notifications are still being developed. This preview uses sample content only and does not collect personal information or process payments.</p>
       <a class="button button-primary" href="portal/index.html">Open portal preview <span aria-hidden="true">↗</span></a>
       <button class="button button-secondary dialog-done" type="button">Close</button>
     </div>

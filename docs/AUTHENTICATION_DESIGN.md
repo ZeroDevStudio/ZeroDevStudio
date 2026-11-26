@@ -1,33 +1,45 @@
-# ZeroDev Studio — Authentication design (v0.4)
+# ZeroDev Studio — Authentication design (v0.6)
 
-## Front-end screens
+## Provider and behavior
 
-- **Sign in:** email and password fields, with a password-recovery shortcut.
-- **Create account:** name, email, password, and future terms acknowledgement. Email verification will be required in production.
-- **Guest access:** project reference plus the email address used for the request. A future service verifies email ownership and sends a private guest-access link. A reference number alone never grants access.
-- **Password recovery:** requests a time-limited reset link through the authentication provider. Responses should avoid revealing whether an email address has an account.
+The selected authentication provider is Supabase Auth. The optional browser adapter uses `supabase-js` v2 and is loaded dynamically only when `js/backend-config.js` has `mode: 'live'` plus a valid project URL and publishable key.
 
-## Appearance setting
+The committed configuration is intentionally `mode: 'demo'` with empty values. In demo mode, forms are intercepted locally and do not transmit or store data.
 
-A shared appearance preference is available across the public site, account preview, and client workspace:
+## Supported configured flows
 
-- `system` follows the browser's `prefers-color-scheme` media query and listens for changes.
-- `light` always uses the light theme.
-- `dark` always uses the dark theme.
+- **Sign up:** email and password plus full name metadata. The backend must have email confirmations enabled.
+- **Email verification:** user enters the one-time code from the Supabase confirmation email. The frontend calls `verifyOtp` with the `email` type.
+- **Resend:** calls the provider's signup-confirmation resend method.
+- **Sign in:** email/password using provider-managed credentials.
+- **Password recovery:** asks the provider to send a recovery email. The recovery session opens a new-password view and updates the password through Auth.
+- **Sign out:** clears the provider session.
 
-The preference is saved in `localStorage` using the key `zerodev-theme`. An early inline bootstrap resolves the effective theme before stylesheets render to reduce theme flash. The shared `js/theme.js` controller keeps the selector synchronized on each page.
+Guest access stays disabled. A ticket reference must never act as an access credential.
 
-## Production security requirements (not implemented in v0.4)
+## Frontend configuration
 
-1. Use a maintained authentication provider (for example, Supabase Auth) and verify email addresses.
-2. Enforce authorization in trusted server-side policies; never rely on hidden buttons or client-side route checks.
-3. Store only provider-managed password hashes; never keep plaintext passwords.
-4. Use secure, expiring, high-entropy guest access tokens. Store token hashes server-side, limit attempts, and support revocation.
-5. Use generic recovery responses and short-lived, single-use password-reset tokens.
-6. Apply rate limits, abuse prevention, session expiry, secure cookies where applicable, and audit logging.
-7. Keep private API/service-role keys out of HTML, CSS, and browser JavaScript.
-8. Collect only necessary personal data and publish a privacy notice before accepting real users.
+`js/backend-config.js` may contain the Supabase project URL and publishable key. A publishable key is designed for browser use, but it does not make database access safe by itself. RLS and least-privilege grants are required.
 
-## Prototype behavior
+Never place a secret key, `service_role` key, SMTP credential, database password, private access token, or email-provider API secret in a frontend file. The adapter must remain in demo mode until a project owner has configured and tested the backend and email sender.
 
-Forms call `preventDefault()` and display a clear preview notice. They do not submit, store, or transmit values. The displayed client portal remains a fictional sample workspace. No real authentication or authorization exists in this release.
+## Database baseline
+
+`supabase/migrations/20261126000000_profiles.sql` creates a minimal profile table linked to `auth.users`. RLS is enabled, and authenticated users can read only their own profile. Browser clients are not granted direct profile writes; a database trigger creates the profile from Auth user metadata.
+
+No ticket, message, project, attachment, staff, or payment tables are created by this migration.
+
+## Production requirements still outstanding
+
+1. Adult/authorized owner supervises project and provider accounts.
+2. Email confirmation enabled; OTP email template uses `{{ .Token }}`; code type and expiry tested.
+3. Custom SMTP and sender-domain authentication configured by the owner.
+4. Exact Site URL and redirect allow-list configured.
+5. RLS policies and grants reviewed for every table before frontend access.
+6. Terms, privacy notice, data retention, backups, and incident process reviewed.
+7. Signup, verification, resend throttling, sign-in, sign-out, password reset, expired codes, invalid codes, and session behavior tested.
+8. Portal route and data authorization implemented before private customer data is displayed.
+
+## Important boundary
+
+A successful Auth session is not proof that the client portal is secured. The portal remains sample data and has no ticket/project authorization. This release must not be marketed as a live customer portal.
