@@ -11,16 +11,21 @@
   <link rel="stylesheet" href="../css/theme.css">
   <link rel="stylesheet" href="../css/promo.css">
   <link rel="stylesheet" href="../css/release-app.css">
+  <link rel="stylesheet" href="../css/v11.css">
   <script src="../js/theme.js" defer></script>
   <script src="../js/backend-config.js" defer></script>
   <script src="../js/data-client.js" defer></script>
+  <script src="../js/locale-currency.js" defer></script>
   <script src="../js/ticket-form.js" defer></script>
 </head>
 <body class="release-page">
   <header class="release-header">
     <a class="release-brand" href="../index.html"><span class="release-mark">Z</span><span>ZeroDev <b>Studio</b></span></a>
     <nav><a href="../index.html">Website</a><a href="../support/index.html">Support</a><a href="../portal/index.html">Client portal</a></nav>
-    <div class="release-header-tools"><label for="project-theme" class="sr-only">Theme</label><select id="project-theme" data-theme-select aria-label="Color theme"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select></div>
+    <div class="release-header-tools"><label for="project-theme" class="sr-only">Theme</label><select id="project-theme" data-theme-select aria-label="Color theme"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select> <div class="zd-locale-tools" aria-label="Country and currency preferences">
+  <label>Country <select data-country-select aria-label="Country"></select></label>
+  <label>Currency <select data-currency-select aria-label="Display currency"></select></label>
+</div></div>
   </header>
 
   <main class="release-main">
@@ -38,6 +43,13 @@
       <div class="release-notice" id="ticket-result" role="status" aria-live="polite" hidden></div>
 
       <form id="project-request-form" class="release-form" hidden>
+        <div class="v11-draft-actions">
+          <button type="button" class="release-action secondary" id="save-ticket-draft">Save draft</button>
+          <label class="v11-inline-label" for="saved-ticket-drafts">Saved drafts</label>
+          <select id="saved-ticket-drafts"><option value="">No draft loaded</option></select>
+          <button type="button" class="release-action secondary" id="load-ticket-draft">Load</button>
+          <button type="button" class="release-action secondary" id="delete-ticket-draft">Delete</button>
+        </div>
         <div class="form-section-title"><span>01</span><div><h3>Project overview</h3><p>Give your request a clear starting point.</p></div></div>
         <label class="release-field">Project title *<input name="title" type="text" minlength="4" maxlength="120" placeholder="Example: Website for my coffee shop" required></label>
         <label class="release-field">What do you need? *
@@ -60,7 +72,10 @@
           </label>
         </div>
         <label class="release-field narrow-field">Budget currency
-          <select name="budget_currency"><option value="PHP" selected>PHP — Philippine peso</option><option value="USD">USD — US dollar</option></select>
+          <select name="budget_currency"><option value="PHP" selected>PHP</option><option value="USD">USD</option><option value="EUR">EUR</option><option value="GBP">GBP</option><option value="CAD">CAD</option><option value="AUD">AUD</option><option value="NZD">NZD</option><option value="SGD">SGD</option><option value="MYR">MYR</option><option value="IDR">IDR</option><option value="THB">THB</option><option value="VND">VND</option><option value="JPY">JPY</option><option value="KRW">KRW</option><option value="CNY">CNY</option><option value="INR">INR</option><option value="AED">AED</option><option value="SAR">SAR</option><option value="BRL">BRL</option><option value="MXN">MXN</option><option value="ZAR">ZAR</option><option value="CHF">CHF</option><option value="HKD">HKD</option><option value="TWD">TWD</option><option value="TRY">TRY</option></select>
+          <small class="zd-locale-note" data-country-detected></small>
+          <p class="zd-fx-preview" data-fx-preview aria-live="polite">Your currency preference will be detected from your browser region and time zone. You can change it manually.</p>
+          <small class="zd-fx-attribution">Indicative rates by <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener noreferrer">ExchangeRate-API</a>. Not a payment or quotation rate.</small>
         </label>
 
         <div class="form-section-title section-spaced"><span>02</span><div><h3>Requirements</h3><p>Tell us what the finished website should do.</p></div></div>
@@ -74,15 +89,17 @@
         <label class="release-field upload-field">Attachments <span class="optional-tag">Optional · up to 5 files</span>
           <input name="attachments" id="ticket-attachments" type="file" accept=".pdf,.png,.jpg,.jpeg,.webp,application/pdf,image/png,image/jpeg,image/webp" multiple>
           <small>PDF, JPG, PNG, or WEBP · maximum 8 MB each. Please upload only files you have permission to share.</small>
+          <div id="ticket-upload-list" class="v11-upload-list" aria-live="polite"></div>
         </label>
 
         <div class="release-policy"><strong>Pricing & payment reminder</strong><p>Our advertised prices are starting examples, not fixed quotes. Final pricing depends on project scope and is confirmed before work begins. GCash is currently the only accepted payment method; PayPal is coming soon. Do not send payment before receiving and approving an official quotation.</p></div>
         <div class="release-policy release-policy-blue"><strong>NEW26 promotion</strong><p>If your verified account has redeemed NEW26 and has not used it on another project, the one-time 10% offer will be attached to this request automatically. Final project prices are confirmed in your quotation.</p></div>
         <label class="release-consent"><input type="checkbox" name="accuracy" required><span>I confirm these project details are accurate and understand this request is not a contract or payment.</span></label>
+        <div id="ticket-upload-status" class="release-notice" role="status" aria-live="polite" hidden></div>
         <button class="release-submit" type="submit">Submit project request <span>→</span></button>
         <p class="release-form-foot">Your request is visible only to your account and authorized ZeroDev Studio staff under the configured access policies.</p>
       </form>
-      <div class="release-disabled" id="ticket-disabled-state"><span class="release-disabled-icon">↗</span><h3>Secure project submissions</h3><p>The form is ready, but real submissions require the project owner to configure Supabase and run the v1.0 database migration. In demo mode, nothing is transmitted or saved.</p><a class="release-button-secondary" href="../docs/V1_RELEASE_SETUP.md">Read the setup guide</a><a class="release-text-link" href="../account/index.html">Go to account access →</a></div>
+      <div class="release-disabled" id="ticket-disabled-state"><span class="release-disabled-icon">↗</span><h3>Secure project submissions</h3><p>The form is ready, but real submissions require the project owner to configure Supabase and run the v1.1 database migrations. In demo mode, nothing is transmitted or saved.</p><a class="release-button-secondary" href="../docs/V1_RELEASE_SETUP.md">Read the setup guide</a><a class="release-text-link" href="../account/index.html">Go to account access →</a></div>
     </section>
   </main>
   <footer class="release-footer"><span>© <span id="release-year"></span> ZeroDev Studio</span><span>Started with zero. Built with purpose.</span><a href="../support/index.html">Support center ↗</a></footer>

@@ -22,7 +22,7 @@
   async function getSupabaseClient() {
     if (!hasLiveConfig()) throw new Error('Live promotion redemption is not configured.');
     if (!supabasePromise) {
-      supabasePromise = import('https://esm.sh/@supabase/supabase-js@2')
+      supabasePromise = import('https://esm.sh/@supabase/supabase-js@2.119.2')
         .then(({ createClient }) => createClient(config.supabaseUrl, config.supabasePublishableKey, {
           auth: { autoRefreshToken: true, persistSession: true, detectSessionInUrl: true }
         }))
@@ -150,7 +150,7 @@
       if (raw.includes('invalid') || raw.includes('inactive') || raw.includes('expired')) {
         throw new Error('That code is invalid or no longer active. Check the code and try again.');
       }
-      throw new Error('The code could not be redeemed. Confirm that the v0.7 promotion migration is installed and try again.');
+      throw new Error('The code could not be redeemed. Confirm that the promotion and ticket migrations are installed in the development project, then try again.');
     }
     const row = Array.isArray(data) ? data[0] : data;
     setApplied({ discountPercent: row?.discount_percent || 10, redeemedAt: row?.redeemed_at }, 'live');

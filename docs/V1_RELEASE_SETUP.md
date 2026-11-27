@@ -1,6 +1,6 @@
-# ZeroDev Studio v1.0 — Release and backend setup
+# ZeroDev Studio v1.0 — Historical setup reference
 
-v1.0 is the first complete **backend-ready ticketing release**. The source includes the public website, verified-account sign-in, registered-client project requests, private ticket messaging, a role-gated staff workspace, in-app notifications, ticket activity history, and private attachment storage.
+This file documents the original v1.0 backend setup for historical reference. For the current v1.1 release, follow [`V1_1_SETUP.md`](V1_1_SETUP.md). v1.0 was the first **backend-ready ticketing release**. The source includes the public website, verified-account sign-in, registered-client project requests, private ticket messaging, a role-gated staff workspace, in-app notifications, ticket activity history, and private attachment storage.
 
 It is deliberately shipped in `demo` mode. A ZIP file cannot provision a live Supabase project, SMTP sender, public domain, or real staff accounts. Do not switch to live mode until every step below has been reviewed and tested by the adult project owner.
 
@@ -34,6 +34,7 @@ It is deliberately shipped in `demo` mode. A ZIP file cannot provision a live Su
    - `supabase/migrations/20261126000000_profiles.sql`
    - `supabase/migrations/20261126010000_promo_code_redemptions.sql`
    - `supabase/migrations/20261126020000_v10_ticket_system.sql`
+   - For v1.1, also review/apply `supabase/migrations/20261127000000_v11_workspace_features.sql`.
 6. Review the resulting tables, policies, private storage bucket, and database functions before using real customer data.
 
 The v1 migration assumes the existing v0.6 profile table and v0.7 promotion tables have already been created.

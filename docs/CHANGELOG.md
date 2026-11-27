@@ -1,3 +1,12 @@
+## v1.1 — Full development update (November 27, 2026)
+
+- Expanded account lifecycle: verification resume/resend, unverified sign-in handling, password recovery/update, and email-change flow.
+- Added timezone/locale-based country approximation, manual country/currency preferences, local persistence, and indicative daily FX conversion.
+- Added private project drafts, attachment previews/retry, client ticket filtering, timeline, unread message indicators, email notification preferences, and staff workload view.
+- Added private email outbox, atomic claims, retries, verified recipient/preference re-checks, Edge Function worker, and optional GitHub Actions scheduler.
+- Added v1.1 migration for currency constraints, private drafts, notification preferences, private email outbox, ticket-scoped RLS, and stricter private Storage paths.
+- Kept frontend configuration in demo mode. SMTP/Resend/provider setup and production verification remain adult-supervised release gates.
+
 # Changelog
 
 ## v1.0 — First release

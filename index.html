@@ -25,9 +25,11 @@
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/promo.css">
   <link rel="stylesheet" href="css/budget-samples.css">
+  <link rel="stylesheet" href="css/v11.css">
   <script src="js/theme.js" defer></script>
   <script src="js/backend-config.js" defer></script>
   <script src="js/promo.js" defer></script>
+  <script src="js/locale-currency.js" defer></script>
   <script src="js/script.js" defer></script>
 </head>
 <body>
@@ -67,11 +69,13 @@
         <div class="theme-picker theme-picker-public">
           <label for="public-theme-select">Theme</label>
           <select id="public-theme-select" data-theme-select aria-label="Color theme">
-            <option value="system">System</option>
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
+            <option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option>
           </select>
         </div>
+        <div class="zd-locale-tools" aria-label="Country and currency preferences">
+  <label>Country <select data-country-select aria-label="Country"></select></label>
+  <label>Currency <select data-currency-select aria-label="Display currency"></select></label>
+</div>
         <a href="#services">Services</a>
         <a href="#work">Our work</a>
         <a href="#budget-samples">Budget examples</a>
@@ -308,7 +312,8 @@
           <div class="price-main" data-price-standard>$20<span> USD</span></div>
           <div class="price-main promo-price-sale" data-price-discounted hidden>$18<span> USD</span></div>
           <div class="price-php">Approximately <b data-price-php-standard>₱1,275 PHP</b><b data-price-php-discount hidden>₱1,148 PHP</b></div>
-          <p class="price-disclaimer">PHP amounts are rounded illustrative conversions. Exchange rates and actual payment conversion may change.</p>
+          <p class="zd-fx-preview">Indicative conversion in your selected currency: <strong data-fx-display data-fx-amount="20" data-fx-base="USD">Loading…</strong>. Reference only; final quotes are confirmed in the agreed currency.</p>
+          <p class="price-disclaimer">PHP amounts are rounded illustrative conversions. Exchange rates and actual payment conversion may change.</p><p class="zd-fx-attribution">Indicative currency data by <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener noreferrer">ExchangeRate-API</a>; converted amounts are estimates only.</p>
           <p class="promo-price-note" data-promo-price-note hidden>NEW26 has been applied to this account's eligible starting-price offer. A custom quotation will show its own discount breakdown.</p>
           </div>
           <div class="price-divider"></div>
@@ -388,7 +393,7 @@
       <a class="back-top" href="legal/terms.html">Terms ↗</a>
       <a class="back-top" href="#top">Back to top ↑</a>
     </div>
-    <div class="container footer-bottom"><span>© <span id="current-year">2026</span> ZeroDev Studio. Public website · v1.0</span><span>Designed with care · Built step by step <span class="promo-easter-egg">Studio easter egg: <code>NEW26</code></span></span></div>
+    <div class="container footer-bottom"><span>© <span id="current-year">2026</span> ZeroDev Studio. Public website · v1.1</span><span>Designed with care · Built step by step <span class="promo-easter-egg">Studio easter egg: <code>NEW26</code></span></span></div>
   </footer>
 
   <dialog class="info-dialog concept-dialog" id="concept-dialog" aria-labelledby="concept-dialog-title">

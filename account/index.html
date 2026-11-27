@@ -20,9 +20,11 @@
   <link rel="stylesheet" href="../css/theme.css">
   <link rel="stylesheet" href="../css/auth.css">
   <link rel="stylesheet" href="../css/promo.css">
+  <link rel="stylesheet" href="../css/v11.css">
   <script src="../js/theme.js" defer></script>
   <script src="../js/backend-config.js" defer></script>
   <script src="../js/promo.js" defer></script>
+  <script src="../js/locale-currency.js" defer></script>
   <script src="../js/auth.js" defer></script>
 </head>
 <body class="auth-page">
@@ -57,6 +59,10 @@
           <option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option>
         </select>
       </div>
+      <div class="zd-locale-tools" aria-label="Country and currency preferences">
+  <label>Country <select data-country-select aria-label="Country"></select></label>
+  <label>Currency <select data-currency-select aria-label="Display currency"></select></label>
+</div>
       <a class="auth-back-link" href="../support/index.html">Support center</a>
       <a class="auth-back-link" href="../index.html">Back to website ↗</a>
     </div>
@@ -100,7 +106,7 @@
           <form class="auth-form" data-auth-form="register">
             <label class="auth-field">Full name<input type="text" name="name" autocomplete="name" placeholder="Your name" required></label>
             <label class="auth-field">Email address<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
-            <label class="auth-field">Create password<input type="password" name="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" required><span class="auth-field-hint">The real service will require a strong, unique password and email verification.</span></label>
+            <label class="auth-field">Create password<input type="password" name="password" autocomplete="new-password" minlength="12" placeholder="At least 12 characters" required><span class="auth-field-hint">The real service will require a strong, unique password and email verification.</span></label>
             <label class="auth-check"><input type="checkbox" name="terms" required><span>I have read the <a href="../legal/terms.html" target="_blank" rel="noopener">terms draft</a> and <a href="../legal/privacy.html" target="_blank" rel="noopener">privacy notice draft</a>. I understand these documents require final review before live launch.</span></label>
             <button class="auth-submit" type="submit">Create account <span aria-hidden="true">→</span></button>
           </form>
@@ -145,10 +151,19 @@
           <p class="auth-footnote"><button class="auth-text-button" type="button" data-auth-view="signin">← Back to sign in</button></p>
         </section>
 
+        <section class="auth-view" id="view-changeemail" role="tabpanel" aria-label="Change email address" data-auth-panel="changeemail" hidden>
+          <form class="auth-form" data-auth-form="change-email">
+            <label class="auth-field">New email address<input type="email" name="email" autocomplete="email" placeholder="new-address@example.com" required></label>
+            <span class="auth-field-hint">Supabase may require confirmation at both the current and new addresses. Do not share confirmation links or codes.</span>
+            <button class="auth-submit" type="submit">Request email change <span aria-hidden="true">→</span></button>
+          </form>
+          <p class="auth-footnote"><button class="auth-text-button" type="button" data-auth-view="signedin">← Back to account</button></p>
+        </section>
+
         <section class="auth-view" id="view-newpassword" role="tabpanel" aria-label="Choose a new password" data-auth-panel="newpassword" hidden>
           <form class="auth-form" data-auth-form="new-password">
-            <label class="auth-field">New password<input type="password" name="password" autocomplete="new-password" minlength="10" placeholder="At least 10 characters" required></label>
-            <label class="auth-field">Confirm new password<input type="password" name="confirmPassword" autocomplete="new-password" minlength="10" placeholder="Enter it again" required></label>
+            <label class="auth-field">New password<input type="password" name="password" autocomplete="new-password" minlength="12" placeholder="At least 12 characters" required><span class="auth-field-hint">Use a unique password that you do not use elsewhere.</span></label>
+            <label class="auth-field">Confirm new password<input type="password" name="confirmPassword" autocomplete="new-password" minlength="12" placeholder="Enter it again" required></label>
             <button class="auth-submit" type="submit">Update password <span aria-hidden="true">→</span></button>
           </form>
         </section>
@@ -157,8 +172,9 @@
           <div class="verification-heading" aria-hidden="true"><span>✓</span></div>
           <p class="verification-copy">Authenticated account</p>
           <p class="verification-address" id="signed-in-email">Your account</p>
-          <p class="auth-field-hint">Your verified account can open the private client workspace. Project tools become available when the owner has configured the production backend.</p>
+          <p class="auth-field-hint">Your verified account can open the private client workspace. Project tools require the reviewed backend and migration setup.</p>
           <a class="auth-submit auth-submit-link" href="../portal/index.html">Open client workspace →</a>
+          <button class="auth-submit auth-submit-muted" type="button" data-auth-view="changeemail">Change email address</button>
           <button class="auth-submit auth-submit-muted" type="button" data-sign-out>Sign out</button>
         </section>
 

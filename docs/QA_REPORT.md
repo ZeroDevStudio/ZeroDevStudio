@@ -1,19 +1,38 @@
-# v1.0 package QA report
+# ZeroDev Studio v1.1 package QA report
 
-## Checks completed
+## Scope
 
-- Parsed all 12 HTML documents with Python's HTML parser.
-- Verified local `href` and `src` references for all HTML documents; no missing local references found.
-- Checked brace balance in all 8 CSS files.
-- Ran `node --check` on all 11 JavaScript files; syntax checks passed.
-- Confirmed browser configuration defaults to `mode: 'demo'` and contains no backend URL or publishable key value.
-- Inspected the release migration for the core table/RLS policies, private bucket policies, role-gating helpers, and NEW26 ticket attachment function.
-- ZIP integrity is checked after the archive is built.
+Static source review and local package checks only. No live Supabase migration was applied, no real emails were sent, no user data was accessed, and no production deployment was performed.
 
-## Not completed
+## Reviewed in source
 
-- The SQL migration has not been executed against a Supabase instance in this environment.
-- Live SMTP delivery, authentication, storage upload, RLS isolation, staff roles, and notifications have not been tested against a connected backend.
-- Interactive browser testing with real Supabase accounts has not been completed.
+- Front-end configuration remains `mode: 'demo'` with empty Supabase URL/publishable key.
+- Supabase JS dependency is pinned to `2.119.2` in browser modules and the Edge Function.
+- The account flow uses Supabase Auth OTP/recovery/email-change calls and protects routes through verified-user checks.
+- Drafts/preferences use own-account RLS in the v1.1 migration; email queue is private and service-role only. The migration also defines `can_access_ticket()` and tightens ticket, staff, message, attachment metadata, ticket-event, and Storage access to the audited ownership/assignment model.
+- Notification worker checks its dedicated request secret, claims queue jobs atomically, checks the user's current preferences and verified email, and does not embed provider/service-role keys.
+- Country/currency preferences are local browser preferences; FX conversions are informational and do not change submitted budget/quote amounts.
+- Staff UI controls are role-aware, with database RLS still being the enforcement boundary.
 
-These are required steps in `V1_RELEASE_SETUP.md` before production use. Static checks are not a substitute for security testing with separate client and staff accounts.
+## Local static checks completed
+
+- `node --check` passed for all 12 JavaScript files.
+- All 12 HTML files parsed, and local script, stylesheet, and image references resolved.
+- The GitHub Actions workflow YAML parsed successfully.
+- The Edge Function TypeScript passed a local `tsc --noEmit` syntax/type pass using minimal Deno/Supabase environment declarations; this is not a Deno deploy/bundle test.
+- A source scan found no obvious service-role, JWT, or provider-secret literals in client/worker code.
+
+These checks do not execute SQL or test real provider behavior. The v1.1 migration has not been applied or executed in this environment.
+
+## Must be tested in a separate development Supabase project
+
+- Apply the new migration and verify its constraints, grants, triggers, functions, and RLS.
+- Use multiple client accounts to verify ticket/draft/message/storage/notification isolation.
+- Test each staff role, assignment restrictions, client-visible messages, and internal notes.
+- Test signup, OTP, resend limits, recovery, password update, email change, session expiry, and sign-out.
+- Configure test SMTP and Resend only with adult-owned provider accounts; test notification opt-in/opt-out, queue retry, skipped jobs, and scheduler runs.
+- Test currency list against the DB constraint and verify that source amounts remain unchanged during display conversion.
+
+## Release status
+
+**Development package assembled; not production-certified.** The included source has not been validated against a live Supabase project or provider account in this run. Keep demo mode enabled until the adult project owner completes `V1_1_SETUP.md` and records successful test results.

@@ -1,29 +1,28 @@
-# Start here — ZeroDev Studio v1.0
+# Start here — ZeroDev Studio v1.1
 
-## Preview the release locally
+## Safe local preview
 
-1. Download `ZeroDevStudio-v1.0.zip` and extract it.
-2. In VS Code, choose **File → Open Folder** and select the inner `ZeroDevStudio` folder.
-3. Open `js/backend-config.js`. Leave `mode: 'demo'`; do not paste any private credentials into the project.
-4. Install/use the VS Code **Live Server** extension and run the root `index.html`.
-5. Explore the public website, budget demos, support center, account page, project request page, client workspace, and staff workspace.
+1. Extract `ZeroDevStudio-v1.1.zip`.
+2. Open the inner `ZeroDevStudio` folder in VS Code.
+3. Open `js/backend-config.js` and leave `mode: 'demo'`. Keep both Supabase values empty for the visual preview.
+4. Run the root `index.html` using VS Code Live Server.
+5. Explore the public page, budget samples, Support Center, account views, project form, client portal, and staff portal.
 
-In demo mode, account and project actions are intentionally disabled. This lets you inspect the UI without collecting or sending real information.
+In demo mode, all account and project actions are intentionally disabled. No real emails or project/customer records are sent or saved.
 
-## To activate backend features
+## Before testing real backend behavior
 
-Read `docs/V1_RELEASE_SETUP.md` from beginning to end. It explains the supervised Supabase setup, migration order, SMTP configuration, safe owner/staff enrollment, and two-client role testing. The adult project owner must complete and review those steps before switching `mode` to `live`.
+Read `docs/V1_1_SETUP.md` fully. The adult project owner must supervise the Supabase development project, migration review, SMTP sender, optional Resend worker, GitHub Actions secrets, staff enrollment, and legal review. Keep production untouched while testing.
 
-## Recommended first test
+## Suggested development test sequence
 
-After the backend has been configured in a separate development project:
+1. Use two adult-supervised test inboxes to register and verify Client A and Client B.
+2. Test resend cooldown, wrong/expired OTP, sign-in, recovery, password update, and email change.
+3. Create one project as Client A, save/load/delete a draft, then submit a ticket with test attachments.
+4. Confirm Client B cannot read Client A's ticket, draft, messages, attachments, or notifications.
+5. Use an owner/manager test account to assign the ticket and send a reply plus an internal note.
+6. Confirm the client sees public replies but never sees internal notes; test developer/designer access on assigned tickets only.
+7. Test search/filter, timeline, unread indicators, notification preferences, and email queue with a provider test domain.
+8. Change country/currency preferences and check that the quoted/requested currency is not altered by display conversion.
 
-1. Create and verify two test client accounts.
-2. Submit a project from Client A.
-3. Confirm Client B cannot see it.
-4. Add an owner staff account using the documented manual SQL step.
-5. Reply to Client A and test an internal staff-only note.
-6. Confirm Client A can see the reply but cannot see the internal note.
-7. Test a developer role and verify it cannot alter ticket status or quotations.
-
-Do not test with real customer data or real payment details. Parent/guardian supervision is required for provider accounts, real customer contact, contracts, and any payment arrangements.
+Do not test with real customer information or real payments. Adult supervision is required for provider accounts, customer contact, agreements, and any payment arrangements.

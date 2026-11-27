@@ -1,36 +1,46 @@
-# ZeroDev Studio — v1.0 First Release
+# ZeroDev Studio — v1.1 Development Release
 
-A lightweight website and client-project platform built with vanilla HTML, CSS, and JavaScript, with an optional Supabase backend. There is no build step or Node.js requirement for the static front end.
+A lightweight studio website and client-project workspace built with vanilla HTML, CSS, and JavaScript, with an optional Supabase backend. The static site has no build step or Node.js requirement. The repository is intentionally shipped in **demo mode**.
 
-## Open the project
+## Preview locally
 
-1. Open this `ZeroDevStudio` folder in VS Code.
-2. Keep `js/backend-config.js` in `mode: 'demo'` for the first local preview.
+1. Open the inner `ZeroDevStudio` folder in VS Code.
+2. Keep `js/backend-config.js` set to `mode: 'demo'` with empty URL/key values.
 3. Run the root `index.html` with VS Code Live Server.
-4. Explore the public website, three budget demos, support center, account pages, project intake page, client workspace, and staff workspace.
+4. Explore the public site, sample pages, Support Center, account interface, project form, client workspace, and staff workspace.
 
-Demo mode deliberately does not create accounts, send OTP email, submit tickets, store messages, or upload files. The client and staff workspace show setup notices rather than fake client records.
+Demo mode does not create accounts, send emails, save drafts, submit tickets, store messages, or upload files. It displays clear demo notices rather than fake customer records.
 
-## v1.0 feature set
+## v1.1 feature set
 
-- **Public site:** responsive studio website, concept portfolio, starter/entry/premium budget examples, pricing and payment notice, FAQ, NEW26 discount visuals, dark/light/system mode, smooth scrolling and reduced-motion support.
-- **Accounts:** Supabase email/password registration, email OTP verification, sign-in, password recovery, and sign-out when a configured live backend is enabled.
-- **Project intake:** secure, verified-account ticket creation with project title, service, budget range/currency, deadline, description, and optional private PDF/JPG/PNG/WEBP attachments (5 files, 8 MiB maximum each).
-- **Client workspace:** own-ticket list, status, quotation view, client-visible message thread, private attachment links, profile details, and in-app notifications.
-- **Staff workspace:** protected by `staff_members`; ticket review, status/quotation updates for permitted roles, client-visible replies, staff-only internal notes, and staff notifications.
-- **Database:** ticket references, row-level security, staff-role helpers, ticket activity, automatic in-app notifications, private storage, and one-ticket NEW26 attachment function.
-- **Support:** searchable ZeroDev Support knowledge base. It is not a live agent chat.
+- **Authentication:** email/password signup, six-digit email verification, resend cooldown, verified-account sign-in, password recovery, password update, sign-out, and email-change confirmation workflow. Supabase remains the authority for identity and verification.
+- **Country and currency:** approximate country detection using browser time zone/locale, manual country selection, display-currency override, saved browser preference, daily indicative FX conversions, and an untouched original budget/quotation currency.
+- **Project intake:** verified-account ticket creation, supported budget currencies, server-side reference generation, up to five private PDF/JPEG/PNG/WEBP attachments (8 MiB each), previews, retry handling, and per-account saved drafts.
+- **Client workspace:** own-ticket search/status filter, quotation display, message threads, unread-message counts, ticket timeline, private attachment links/image previews, in-app notifications, and opt-in email-notification preferences.
+- **Staff workspace:** role-gated ticket queue, search/status filters, status/quote/assignment controls for management roles, active-team workload overview, client replies, management-only notes, staff notifications, and a ticket activity log.
+- **Email delivery:** separate private Edge Function outbox worker for opted-in project notifications, atomic job claiming, retry handling, verified-recipient checks, and a GitHub Actions scheduler template. Account verification/recovery email uses Supabase Auth SMTP separately.
+- **Security:** RLS remains the authority for all client/staff data access; no browser service-role, SMTP, Resend, or database secrets; email delivery is off by default.
 
-## Important limits
+## What's not included
 
-- The package ships in `demo` mode. Live operation requires an adult-supervised Supabase project, custom SMTP, reviewed database migrations, real staff membership enrollment, and an HTTPS deployment. See `docs/V1_RELEASE_SETUP.md`.
-- Guest ticket submissions/guest access links are not enabled. Clients need a verified account in v1.0.
-- In-app notifications are active only when connected to Supabase. Ticket email alerts and browser push are not enabled.
-- Payments are manual and outside the platform. GCash is the only currently accepted method; PayPal is coming soon. Do not collect payment credentials, MPINs, OTPs, or PINs.
-- Do not put Supabase service-role keys, database passwords, SMTP credentials, or mail-provider secrets in browser code.
-- Staff membership cannot be self-created or edited from the site. The owner adds verified staff accounts manually using the documented SQL step.
+No guest ticket links, browser push notifications, payment gateway, automated GCash collection, PayPal, automatic quote acceptance, e-signatures, or public self-service staff enrollment. Payments remain outside the app and require adult-supervised business arrangements. The help pages are not live human chat.
 
-## Key paths
+## Migration order
+
+For a **new development Supabase project**, apply in order:
+
+1. `supabase/migrations/20261126000000_profiles.sql`
+2. `supabase/migrations/20261126010000_promo_code_redemptions.sql`
+3. `supabase/migrations/20261126020000_v10_ticket_system.sql`
+4. `supabase/migrations/20261127000000_v11_workspace_features.sql`
+
+For the existing development project where the first three migrations are already applied, review and apply **only migration 4**. Never apply this package to production without a separate adult-led review, backup, and test plan.
+
+## Important setup boundary
+
+The ZIP is a development source package, not a production service. Actual use requires a parent/guardian or authorized adult to own and supervise the Supabase and email-provider accounts, review the migration and policies, configure Auth SMTP and the optional Resend notification worker, enroll staff, complete legal/privacy review, test with test accounts, and approve any live deployment. See `docs/V1_1_SETUP.md`.
+
+## Key files
 
 ```text
 ZeroDevStudio/
@@ -39,27 +49,16 @@ ZeroDevStudio/
 ├── projects/new.html
 ├── portal/index.html
 ├── staff/index.html
-├── support/index.html
-├── legal/{terms,privacy}.html  # Drafts requiring adult/legal review
-├── samples/{starter,entry,premium}/index.html
-├── assets/
-├── css/                  # Public, theme, auth, portal, support, app styling
-├── js/                   # Auth, promo, shared client, tickets, portal and staff logic
+├── legal/                       # Draft legal notices; adult/legal review required
+├── css/                         # Site, auth, portal, staff, and v1.1 styling
+├── js/                          # Auth, locale/FX, ticket, portal, staff, promo logic
 ├── supabase/
-│   ├── migrations/
-│   └── templates/confirm-signup.html
-└── docs/
-    ├── V1_RELEASE_SETUP.md
-    ├── V1_RELEASE_NOTES.md
-    └── earlier design/setup documents
+│   ├── migrations/              # v0.6, v0.7, v1.0, and v1.1 SQL
+│   ├── functions/send-notification-emails/
+│   ├── templates/confirm-signup.html
+│   └── config.toml
+├── .github/workflows/           # Optional email queue scheduler
+└── docs/                        # Setup, release notes, and QA status
 ```
-
-## Database migration order
-
-1. `20261126000000_profiles.sql`
-2. `20261126010000_promo_code_redemptions.sql`
-3. `20261126020000_v10_ticket_system.sql`
-
-Apply only in a separate development project after the adult owner reviews the SQL and the access policies. Detailed setup and the two-account role-testing checklist are in `docs/V1_RELEASE_SETUP.md`.
 
 **ZeroDev Studio — Started with zero. Built with purpose.**
